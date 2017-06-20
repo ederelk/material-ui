@@ -1,4 +1,4 @@
-// @flow
+// @flow weak
 
 import warning from 'warning';
 import deepmerge from 'deepmerge'; // < 1kb payload overhead when lodash/merge is > 3kb.
@@ -36,6 +36,9 @@ export const light = {
     appBar: grey[100],
     contentFrame: grey[200],
   },
+  line: {
+    stepper: grey[400],
+  },
 };
 
 export const dark = {
@@ -66,6 +69,10 @@ export const dark = {
     contentFrame: grey[900],
     status: common.black,
   },
+  line: {
+    // TODO: What should the dark theme have for stepper line? Not stated in style guide
+    stepper: grey[400],
+  },
 };
 
 function getContrastText(color) {
@@ -94,6 +101,7 @@ export default function createPalette(palette: Object) {
       input: shades[type].input,
       action: shades[type].action,
       background: shades[type].background,
+      line: shades[type].line,
       getContrastText,
     },
     other,
