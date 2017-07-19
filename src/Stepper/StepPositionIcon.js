@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { createStyleSheet } from "jss-theme-reactor";
 import withStyles from "../styles/withStyles";
-import withTheme from "../styles/withTheme";
 import SvgIcon from "../SvgIcon";
 import { compose } from "recompose";
 
@@ -50,10 +49,6 @@ StepPositionIcon.propTypes = {
    * The step position as a number.
    */
   position: PropTypes.number.isRequired,
-  /**
-   * @ignore
-   */
-  theme: PropTypes.object.isRequired
 };
 
-export default compose(withStyles(styleSheet), withTheme)(StepPositionIcon);
+export default withStyles(styleSheet)(StepPositionIcon);

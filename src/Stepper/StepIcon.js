@@ -7,7 +7,7 @@ import withStyles from "../styles/withStyles";
 import StepPositionIcon from './StepPositionIcon';
 
 export const styleSheet = createStyleSheet("MuiStepIcon", theme => ({
-  checkIcon: {
+  root: {
     fill: theme.palette.primary[500],
     display: "block",
   },
@@ -19,7 +19,7 @@ function StepIcon(props) {
 
   if (iconType === "number" || iconType === "string") {
     if (completed) {
-      return <CheckCircle className={classes.checkIcon} />;
+      return <CheckCircle className={classes.root} />;
     }
     return (
       <StepPositionIcon
