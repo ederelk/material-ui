@@ -46,6 +46,13 @@ determine when all steps are completed (or even if they need to be completed).
 {{demo='pages/component-demos/stepper/HorizontalNonLinearStepper.js'}}
 
 
+## Horizontal Alternative Label Position
+
+Labels can be placed below the step icon by setting the `alternativeLabel` prop on the `<Stepper>` component.
+
+{{demo='pages/component-demos/stepper/HorizontalAlternativeLabelStepper.js'}}
+
+
 ## Vertical Stepper
 
 {{demo='pages/component-demos/stepper/VerticalLinearStepper.js'}}

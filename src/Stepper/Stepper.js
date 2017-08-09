@@ -11,22 +11,26 @@ import StepConnector from "./StepConnector";
 export const styleSheet = createStyleSheet("MuiStepper", theme => ({
   root: {
     display: "flex",
+    padding: theme.spacing.unit * 3, // TODO: Question: Guidelines state 24px, should we use `theme.spacing.unit * 3`?
+  },
+  nonAlternativeLabel: {
     alignContent: "center",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
   },
   horizontal: {
     flexDirection: "row",
-    alignItems: "center"
+    alignItems: "center",
   },
   vertical: {
     flexDirection: "column",
-    alignItems: "stretch"
-  }
+    alignItems: "stretch",
+  },
 }));
 
 function Stepper(props) {
   const {
     activeStep,
+    alternativeLabel,
     classes,
     className: classNameProp,
     children,
@@ -39,7 +43,8 @@ function Stepper(props) {
   const className = classNames(
     classes.root,
     classNameProp,
-    classes[orientation]
+    alternativeLabel ? null : classes.nonAlternativeLabel,
+    alternativeLabel ? null : classes[orientation],
   );
 
   const connector = React.cloneElement(connectorProp, { orientation });
@@ -48,6 +53,7 @@ function Stepper(props) {
     const controlProps = {
       index,
       orientation,
+      totalSteps: children.length,
     };
 
     if (activeStep === index) {
@@ -62,8 +68,13 @@ function Stepper(props) {
       controlProps.last = true;
     }
 
+    if (alternativeLabel) {
+      controlProps.alternativeLabel = true;
+      controlProps.connector = connectorProp;
+    }
+
     return [
-      index > 0 && connector,
+      !alternativeLabel && index > 0 && connector,
       React.cloneElement(step, Object.assign(controlProps, step.props))
     ];
   });
@@ -80,6 +91,10 @@ Stepper.propTypes = {
    * Set the active step (zero based index).
    */
   activeStep: PropTypes.number,
+  /**
+   * If set to 'true' and orientation is horizontal, then the step label will be positioned under the icon.
+   */
+  alternativeLabel: PropTypes.bool,
   /**
    * Two or more `<Step />` components.
    */
@@ -108,6 +123,7 @@ Stepper.propTypes = {
 
 Stepper.defaultProps = {
   activeStep: 0,
+  alternativeLabel: false,
   connector: <StepConnector />,
   linear: true,
   orientation: "horizontal",

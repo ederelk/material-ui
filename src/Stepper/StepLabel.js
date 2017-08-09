@@ -16,7 +16,7 @@ export const styleSheet = createStyleSheet("MuiStepLabel", theme => ({
     paddingRight: 14,
   },
   horizontal: {
-    height: 72,
+    // height: 72,
   },
   vertical: {
     height: -64,
@@ -25,7 +25,7 @@ export const styleSheet = createStyleSheet("MuiStepLabel", theme => ({
     fontWeight: 500,
   },
   completed: {
-
+    fontWeight: 500,
   },
   disabled: {
     cursor: 'default',
@@ -40,15 +40,29 @@ export const styleSheet = createStyleSheet("MuiStepLabel", theme => ({
   iconContainer: {
     paddingRight: 8,
   },
+  alternativeLabelRoot: {
+    flexDirection: 'column',
+    justifyContent: 'flex-top',
+    margin: '0 auto',
+  },
+  alternativeLabel: {
+    textAlign: 'center',
+    marginTop: theme.spacing.unit * 2,
+  },
+  alternativeLabelIconContainer: {
+    alignItems: 'center',
+  }
 }));
 
 function StepLabel(props) {
   const {
     active,
     completed,
+    connector,
     disabled,
     icon,
     orientation,
+    alternativeLabel,
     last,
     children,
     classes,
@@ -57,26 +71,34 @@ function StepLabel(props) {
 
   const className = classNames(
     classes.root,
+    classes[orientation],
     {
-      [classes.active]: active,
       [classes.disabled]: disabled,
       [classes.completed]: completed,
+      [classes.alternativeLabelRoot]: alternativeLabel,
     },
-    classes[orientation],
+  );
+  const labelClassName = classNames(
+    {
+      [classes.alternativeLabel]: alternativeLabel,
+      [classes.active]: active,
+      [classes.completed]: completed,
+    }
   );
 
   return (
     <span className={className} {...other}>
       {icon && (
-        <span className={classes.iconContainer}>
+        <span className={alternativeLabel ? null : classes.iconContainer}>
           <StepIcon
             completed={completed}
             active={active}
             icon={icon}
+            alternativeLabel={alternativeLabel}
           />
         </span>
       )}
-      <Typography type="body1">{children}</Typography>
+      <Typography type="body1" className={labelClassName}>{children}</Typography>
     </span>
   );
 }
@@ -87,6 +109,11 @@ StepLabel.propTypes = {
    */
   active: PropTypes.bool,
   /**
+   * @ignore
+   * Set internally by Stepper when it's supplied with the alternativeLabel prop.
+   */
+  alternativeLabel: PropTypes.bool,
+  /**
    * Should be `StepLabel` sub-components such as `StepLabelLabel`.
    */
   children: PropTypes.node,
@@ -94,6 +121,11 @@ StepLabel.propTypes = {
    * Mark the step as completed. Is passed to child components.
    */
   completed: PropTypes.bool,
+  /**
+   * @ignore
+   * Passed down from Stepper if alternativeLabel is also set.
+   */
+  connector: PropTypes.node,
   /**
    * Mark the step as disabled, will also disable the button if
    * `StepLabelButton` is a child of `StepLabel`. Is passed to child components.

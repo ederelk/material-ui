@@ -15,13 +15,20 @@ export const styleSheet = createStyleSheet("MuiStep", theme => ({
   },
   vertical: {
     marginLeft: -14,
+  },
+  alternativeLabel: {
+    flex: 1,
+    position: "relative",
+    marginLeft: 0,
   }
 }));
 
 function Step(props) {
   const {
     active,
+    alternativeLabel,
     completed,
+    connector,
     disabled,
     index,
     last,
@@ -33,7 +40,8 @@ function Step(props) {
 
   const className = classNames(
     classes.root,
-    classes[orientation]
+    classes[orientation],
+    { [classes.alternativeLabel]: alternativeLabel },
   );
 
   return (
@@ -43,7 +51,9 @@ function Step(props) {
           child,
           {
             active,
+            alternativeLabel,
             completed,
+            connector,
             disabled,
             icon: index + 1,
             last,
@@ -52,6 +62,9 @@ function Step(props) {
           },
         )
       )}
+      {alternativeLabel && !last &&
+        React.cloneElement(connector, { orientation, alternativeLabel })
+      }
     </div>
   );
 }
@@ -62,6 +75,11 @@ Step.propTypes = {
    */
   active: PropTypes.bool,
   /**
+   * @ignore
+   * Set internally by Stepper when it's supplied with the alternativeLabel prop.
+   */
+  alternativeLabel: PropTypes.bool,
+  /**
    * Should be `Step` sub-components such as `StepLabel`.
    */
   children: PropTypes.node,
@@ -69,6 +87,11 @@ Step.propTypes = {
    * Mark the step as completed. Is passed to child components.
    */
   completed: PropTypes.bool,
+  /**
+   * @ignore
+   * Passed down from Stepper if alternativeLabel is also set.
+   */
+  connector: PropTypes.node,
   /**
    * Mark the step as disabled, will also disable the button if
    * `StepButton` is a child of `Step`. Is passed to child components.
@@ -87,6 +110,10 @@ Step.propTypes = {
    * @ignore
    */
   orientation: PropTypes.oneOf(["horizontal", "vertical"]).isRequired,
+  /**
+   * @ignore
+   */
+  totalSteps: PropTypes.number.isRequired,
 };
 
 export default withStyles(styleSheet)(Step);

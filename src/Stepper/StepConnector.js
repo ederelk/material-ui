@@ -15,7 +15,8 @@ export const styleSheet = createStyleSheet("MuiStepConnector", theme => ({
     borderColor: theme.palette.line.stepper,
   },
   rootVertical: {
-    marginLeft: 14 + 11 // padding + 1/2 icon
+    marginLeft: theme.spacing.unit + 4,
+    padding: `${theme.spacing.unit}px 0`,
   },
   lineHorizontal: {
     marginLeft: -6,
@@ -25,12 +26,22 @@ export const styleSheet = createStyleSheet("MuiStepConnector", theme => ({
   lineVertical: {
     borderLeftStyle: "solid",
     borderLeftWidth: 1,
-    minHeight: 28
+    minHeight: 28,
+  },
+  alternativeLabelRoot: {
+    position: "absolute",
+    top: theme.spacing.unit + 4,
+    left: 'calc(50% + 20px)',
+    right: 'calc(-50% + 20px)',
+  },
+  alternativeLabelLine: {
+    marginLeft: 0,
   }
 }));
 
 function StepConnector(props) {
   const {
+    alternativeLabel,
     className: classNameProp,
     classes,
     orientation,
@@ -38,8 +49,11 @@ function StepConnector(props) {
   } = props;
 
   const className = classNames(
-    classes.root,
-    { [classes.rootVertical]: orientation === "vertical" },
+    {
+      [classes.root]: !alternativeLabel,
+      [classes.rootVertical]: orientation === "vertical",
+      [classes.alternativeLabelRoot]: alternativeLabel,
+    },
     classNameProp
   );
   const lineClassName = classNames(
@@ -47,6 +61,7 @@ function StepConnector(props) {
     {
       [classes.lineHorizontal]: orientation === 'horizontal',
       [classes.lineVertical]: orientation === 'vertical',
+      [classes.alternativeLabelLine]: alternativeLabel,
     }
   );
 
@@ -58,6 +73,11 @@ function StepConnector(props) {
 }
 
 StepConnector.propTypes = {
+  /**
+   * @ignore
+   * Set internally by Step when it's supplied with the alternativeLabel prop.
+   */
+  alternativeLabel: PropTypes.bool,
   /**
    * Useful to extend the style applied to the component.
    */

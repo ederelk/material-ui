@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { createStyleSheet } from "jss-theme-reactor";
-import classNames from "classnames";
 import CheckCircle from "material-ui-icons/CheckCircle";
 import withStyles from "../styles/withStyles";
 import StepPositionIcon from './StepPositionIcon';

@@ -20,11 +20,15 @@ export const styleSheet = createStyleSheet("MuiStepButton", theme => ({
     paddingRight: 14,
     background: 'none',
   },
+  alternativeLabelRoot: {
+    margin: '0 auto',
+  }
 }));
 
 function StepButton(props) {
   const {
     active,
+    alternativeLabel,
     children,
     className: classNameProp,
     completed,
@@ -37,7 +41,11 @@ function StepButton(props) {
     ...other
   } = props;
 
-  const className = classNames(classes.root, classNameProp);
+  const className = classNames(
+    classes.root,
+    [classes.alternativeLabelRoot]: alternativeLabel,
+    classNameProp,
+  );
   const child = isLabel(children) ? children : <StepLabel>{children}</StepLabel>;
 
   return (
@@ -46,7 +54,18 @@ function StepButton(props) {
       className={className}
       {...other}
     >
-      {React.cloneElement(child, {active, completed, disabled, icon, iconContainerStyle, orientation})}
+      {React.cloneElement(
+        child,
+        {
+          active,
+          alternativeLabel,
+          completed,
+          disabled,
+          icon,
+          iconContainerStyle,
+          orientation
+        }
+      )}
     </ButtonBase>
   );
 }
@@ -56,6 +75,11 @@ StepButton.propTypes = {
    * Passed from `Step` Is passed to StepLabel.
    */
   active: PropTypes.bool,
+  /**
+   * @ignore
+   * Set internally by Stepper when it's supplied with the alternativeLabel prop.
+   */
+  alternativeLabel: PropTypes.bool,
   /**
    * Can be a `StepLabel` or a node to place inside `StepLabel` as children.
    */
