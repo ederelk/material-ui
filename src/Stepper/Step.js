@@ -110,10 +110,6 @@ Step.propTypes = {
    * @ignore
    */
   orientation: PropTypes.oneOf(["horizontal", "vertical"]).isRequired,
-  /**
-   * @ignore
-   */
-  totalSteps: PropTypes.number.isRequired,
 };
 
 export default withStyles(styleSheet)(Step);

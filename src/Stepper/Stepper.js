@@ -35,7 +35,7 @@ function Stepper(props) {
     className: classNameProp,
     children,
     connector: connectorProp,
-    linear,
+    nonLinear,
     orientation,
     ...other
   } = props;
@@ -53,14 +53,13 @@ function Stepper(props) {
     const controlProps = {
       index,
       orientation,
-      totalSteps: children.length,
     };
 
     if (activeStep === index) {
       controlProps.active = true;
-    } else if (linear && activeStep > index) {
+    } else if (!nonLinear && activeStep > index) {
       controlProps.completed = true;
-    } else if (linear && activeStep < index) {
+    } else if (!nonLinear && activeStep < index) {
       controlProps.disabled = true;
     }
 
@@ -112,9 +111,9 @@ Stepper.propTypes = {
    */
   connector: PropTypes.node,
   /**
-   * If set to `true`, the `Stepper` will not assist in controlling steps for linear flow
+   * If set the `Stepper` will not assist in controlling steps for linear flow
    */
-  linear: PropTypes.bool,
+  nonLinear: PropTypes.bool,
   /**
    * The stepper orientation (layout flow direction)
    */
@@ -125,7 +124,7 @@ Stepper.defaultProps = {
   activeStep: 0,
   alternativeLabel: false,
   connector: <StepConnector />,
-  linear: true,
+  nonLinear: false,
   orientation: "horizontal",
 };
 

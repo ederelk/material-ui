@@ -7,19 +7,19 @@ import { Step, Stepper, StepLabel, StepButton } from "material-ui/Stepper";
 import Button from "material-ui/Button";
 import Typography from "material-ui/Typography";
 
-const styleSheet = createStyleSheet("HorizontalNonLinearStepper", theme => ({
+const styleSheet = createStyleSheet("HorizontalLabelPositionBelowStepper", theme => ({
   root: {
     width: '90%'
   },
   button: {
     marginRight: theme.spacing.unit,
   },
-  completed: {
-    display: 'inline-block',
-  },
+  backButton: {
+    marginRight: theme.spacing.unit
+  }
 }));
 
-class HorizontalNonLinearStepper extends Component {
+class HorizontalLabelPositionBelowStepper extends Component {
   state = {
     activeStep: 0,
     completed: {},
@@ -27,20 +27,13 @@ class HorizontalNonLinearStepper extends Component {
 
   handleNext = () => {
     this.setState({
-      activeStep: this.state.activeStep + 1,
+      activeStep: this.state.activeStep + 1
     });
   };
 
   handleBack = () => {
     this.setState({
-      activeStep: this.state.activeStep - 1,
-    });
-  };
-
-  handleReset = () => {
-    this.setState({
-      activeStep: 0,
-      completed: {},
+      activeStep: this.state.activeStep - 1
     });
   };
 
@@ -58,6 +51,13 @@ class HorizontalNonLinearStepper extends Component {
       activeStep: this.state.activeStep + 1,
     });
   }
+
+  handleReset = () => {
+    this.setState({
+      activeStep: 0,
+      completed: {},
+    });
+  };
 
   getSteps() {
     return ["Select campaign settings", "Create an ad group", "Create an ad"];
@@ -83,11 +83,11 @@ class HorizontalNonLinearStepper extends Component {
 
     return (
       <div className={classes.root}>
-        <Stepper nonLinear activeStep={activeStep}>
+        <Stepper nonLinear activeStep={activeStep} alternativeLabel>
           {steps.map((label, i) => (
             <Step key={i}>
               <StepButton onClick={this.handleStep(i)} completed={this.state.completed[i]}>
-                {label}
+                <StepLabel>{label}</StepLabel>
               </StepButton>
             </Step>
           ))}
@@ -128,8 +128,8 @@ class HorizontalNonLinearStepper extends Component {
   }
 }
 
-HorizontalNonLinearStepper.propTypes = {
+HorizontalLabelPositionBelowStepper.propTypes = {
   classes: PropTypes.object
 };
 
-export default withStyles(styleSheet)(HorizontalNonLinearStepper);
+export default withStyles(styleSheet)(HorizontalLabelPositionBelowStepper);
