@@ -26,14 +26,14 @@ components: MobileStepper
 - Non-linear
 
 
-## Horizontal Linear Stepper
+## Horizontal Linear
 
 The `<Stepper>` can be controlled by passing the current step index (zero based) as the `activeStep` prop. `<Stepper>` orientation is set using the `orientation` prop.
 
 {{demo='pages/component-demos/stepper/HorizontalLinearStepper.js'}}
 
 
-## Horizontal Non Linear Stepper
+## Horizontal Non Linear
 
 Non-linear steppers allow users to enter a multi-step flow at any point.
 
@@ -46,14 +46,14 @@ determine when all steps are completed (or even if they need to be completed).
 {{demo='pages/component-demos/stepper/HorizontalNonLinearStepper.js'}}
 
 
-## Horizontal Alternative Label Position
+## Horizontal Linear - Alternative Label
 
 Labels can be placed below the step icon by setting the `alternativeLabel` prop on the `<Stepper>` component.
 
 {{demo='pages/component-demos/stepper/HorizontalLinearAlternativeLabelStepper.js'}}
 
 
-## Horizontal Non Linear Alternative Label Position
+## Horizontal Non Linear - Alternative Label
 
 {{demo='pages/component-demos/stepper/HorizontalNonLinearAlternativeLabelStepper.js'}}
 

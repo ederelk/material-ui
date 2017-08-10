@@ -37,13 +37,6 @@ class HorizontalNonLinearStepper extends Component {
     });
   };
 
-  handleReset = () => {
-    this.setState({
-      activeStep: 0,
-      completed: {},
-    });
-  };
-
   handleStep = step => () => {
     this.setState({
       activeStep: step,
@@ -58,6 +51,19 @@ class HorizontalNonLinearStepper extends Component {
       activeStep: this.state.activeStep + 1,
     });
   }
+
+  handleFinish = () => {
+    this.setState({
+      activeStep: 4,
+    })
+  }
+
+  handleReset = () => {
+    this.setState({
+      activeStep: 0,
+      completed: {},
+    });
+  };
 
   getSteps() {
     return ["Select campaign settings", "Create an ad group", "Create an ad"];
@@ -94,11 +100,12 @@ class HorizontalNonLinearStepper extends Component {
         </Stepper>
         <div>
           {this.state.activeStep === steps.length + 1
-            ? <p>
+            ? <div>
+                <p>All steps completed - you're finished</p>
                 <Button onClick={this.handleReset}>
                   Reset
                 </Button>
-              </p>
+              </div>
             : <div>
                 <p>{this.getStepContent(activeStep)}</p>
                 <div>
@@ -109,7 +116,7 @@ class HorizontalNonLinearStepper extends Component {
                     Next
                   </Button>
                   {Object.keys(this.state.completed).length === 3 &&
-                    <Button raised color="primary" onClick={this.handleNext} className={classes.button}>
+                    <Button raised color="primary" onClick={this.handleFinish} className={classes.button}>
                       Finish
                     </Button>
                   }

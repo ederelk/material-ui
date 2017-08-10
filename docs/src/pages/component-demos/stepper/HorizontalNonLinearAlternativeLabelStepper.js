@@ -16,7 +16,10 @@ const styleSheet = createStyleSheet("HorizontalLabelPositionBelowStepper", theme
   },
   backButton: {
     marginRight: theme.spacing.unit
-  }
+  },
+  completed: {
+    display: 'inline-block',
+  },
 }));
 
 class HorizontalLabelPositionBelowStepper extends Component {
@@ -50,6 +53,12 @@ class HorizontalLabelPositionBelowStepper extends Component {
       completed,
       activeStep: this.state.activeStep + 1,
     });
+  }
+
+  handleFinish = () => {
+    this.setState({
+      activeStep: 4,
+    })
   }
 
   handleReset = () => {
@@ -87,18 +96,19 @@ class HorizontalLabelPositionBelowStepper extends Component {
           {steps.map((label, i) => (
             <Step key={i}>
               <StepButton onClick={this.handleStep(i)} completed={this.state.completed[i]}>
-                <StepLabel>{label}</StepLabel>
+                {label}
               </StepButton>
             </Step>
           ))}
         </Stepper>
         <div>
           {this.state.activeStep === steps.length + 1
-            ? <p>
+            ? <div>
+                <p>All steps completed - you're finished</p>
                 <Button onClick={this.handleReset}>
                   Reset
                 </Button>
-              </p>
+              </div>
             : <div>
                 <p>{this.getStepContent(activeStep)}</p>
                 <div>
@@ -109,7 +119,7 @@ class HorizontalLabelPositionBelowStepper extends Component {
                     Next
                   </Button>
                   {Object.keys(this.state.completed).length === 3 &&
-                    <Button raised color="primary" onClick={this.handleNext} className={classes.button}>
+                    <Button raised color="primary" onClick={this.handleFinish} className={classes.button}>
                       Finish
                     </Button>
                   }

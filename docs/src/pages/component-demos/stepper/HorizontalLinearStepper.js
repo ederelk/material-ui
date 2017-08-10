@@ -71,11 +71,12 @@ class HorizontalLinearStepper extends Component {
         </Stepper>
         <div>
           {this.state.activeStep === steps.length + 1
-            ? <p>
+            ? <div>
+                <p>All steps completed - you're finished</p>
                 <Button onClick={this.handleReset}>
                   Reset
                 </Button>
-              </p>
+              </div>
             : <div>
                 <p>{this.getStepContent(activeStep)}</p>
                 <div>
