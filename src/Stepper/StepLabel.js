@@ -58,7 +58,6 @@ function StepLabel(props) {
   const {
     active,
     completed,
-    connector,
     disabled,
     icon,
     orientation,
@@ -121,11 +120,6 @@ StepLabel.propTypes = {
    * Mark the step as completed. Is passed to child components.
    */
   completed: PropTypes.bool,
-  /**
-   * @ignore
-   * Passed down from Stepper if alternativeLabel is also set.
-   */
-  connector: PropTypes.node,
   /**
    * Mark the step as disabled, will also disable the button if
    * `StepLabelButton` is a child of `StepLabel`. Is passed to child components.

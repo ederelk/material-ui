@@ -53,7 +53,6 @@ function Step(props) {
             active,
             alternativeLabel,
             completed,
-            connector,
             disabled,
             icon: index + 1,
             last,
