@@ -35,6 +35,7 @@ function Step(props) {
     orientation,
     children,
     classes,
+    optional,
     ...other
   } = props;
 
@@ -57,6 +58,7 @@ function Step(props) {
             icon: index + 1,
             last,
             orientation,
+            optional,
             ...child.props,
           },
         )
@@ -105,6 +107,10 @@ Step.propTypes = {
    * @ignore
    */
   last: PropTypes.bool,
+  /**
+   * Define this step as optional.
+   */
+  optional: PropTypes.bool,
   /**
    * @ignore
    */

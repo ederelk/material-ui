@@ -40,7 +40,6 @@ class HorizontalLabelPositionBelowStepper extends Component {
 
   getSteps() {
     return ["Select master blaster campaign settings", "Create an ad group", "Create an ad"];
-    return ["Step 1", "Step 2", "Step 3"];
   }
 
   getStepContent(stepIndex) {
@@ -51,8 +50,6 @@ class HorizontalLabelPositionBelowStepper extends Component {
         return "What is an ad group anyways?";
       case 2:
         return "This is the bit I really care about!";
-      default:
-        return "You're a long way from home sonny jim!";
     }
   }
 
@@ -71,7 +68,7 @@ class HorizontalLabelPositionBelowStepper extends Component {
           ))}
         </Stepper>
         <div>
-          {this.state.activeStep === steps.length + 1
+          {this.state.activeStep === steps.length
             ? <div>
                 <p>All steps completed - you're finished</p>
                 <Button onClick={this.handleReset}>
@@ -85,7 +82,7 @@ class HorizontalLabelPositionBelowStepper extends Component {
                     Back
                   </Button>
                   <Button raised color="primary" onClick={this.handleNext}>
-                    {activeStep === steps.length ? "Finish" : "Next"}
+                    {activeStep === steps.length - 1 ? "Finish" : "Next"}
                   </Button>
                 </div>
               </div>}

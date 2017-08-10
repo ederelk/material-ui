@@ -51,7 +51,7 @@ export const styleSheet = createStyleSheet("MuiStepLabel", theme => ({
   },
   alternativeLabelIconContainer: {
     alignItems: 'center',
-  }
+  },
 }));
 
 function StepLabel(props) {
@@ -65,6 +65,7 @@ function StepLabel(props) {
     last,
     children,
     classes,
+    optional,
     ...other
   } = props;
 
@@ -97,7 +98,12 @@ function StepLabel(props) {
           />
         </span>
       )}
-      <Typography type="body1" className={labelClassName}>{children}</Typography>
+      <div>
+        <Typography type="body1" className={labelClassName}>{children}</Typography>
+        {optional &&
+          <Typography type="caption" className={classes.optional}>Optional</Typography>
+        }
+      </div>
     </span>
   );
 }
@@ -137,6 +143,10 @@ StepLabel.propTypes = {
    * @ignore
    */
   last: PropTypes.bool,
+  /**
+   * @ignore
+   */
+  optional: PropTypes.bool,
   /**
    * @ignore
    */

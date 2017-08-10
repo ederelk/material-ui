@@ -50,8 +50,6 @@ class VerticalLinearStepper extends Component {
         return "What is an ad group anyways?";
       case 2:
         return "This is the bit I really care about!";
-      default:
-        return "You're a long way from home sonny jim!";
     }
   }
 
@@ -70,23 +68,25 @@ class VerticalLinearStepper extends Component {
           ))}
         </Stepper>
         <div>
-          {this.state.activeStep === steps.length + 1
-            ? <p>
-                <Button onClick={this.handleReset}>
+          {activeStep === steps.length
+            ? <div>
+                <p>All steps completed - you're finished</p>
+                <Button onClick={this.handleReset} className={classes.button}>
                   Reset
                 </Button>
-              </p>
+              </div>
             : <div>
                 <p>{this.getStepContent(activeStep)}</p>
                 <div>
-                  <Button disabled={activeStep === 0} onClick={this.handleBack} className={classes.backButton}>
+                  <Button disabled={activeStep === 0} onClick={this.handleBack} className={classes.button}>
                     Back
                   </Button>
-                  <Button raised color="primary" onClick={this.handleNext}>
-                    {activeStep === steps.length ? "Finish" : "Next"}
+                  <Button raised color="primary" onClick={this.handleNext} className={classes.button}>
+                    {activeStep === steps.length - 1 ? "Finish" : "Next"}
                   </Button>
                 </div>
-              </div>}
+              </div>
+          }
         </div>
       </div>
     );

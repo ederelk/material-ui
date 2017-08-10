@@ -25,9 +25,34 @@ class HorizontalNonLinearStepper extends Component {
     completed: {},
   };
 
+  completedSteps() {
+    return Object.keys(this.state.completed).length;
+  }
+
+  totalSteps() {
+    return this.getSteps().length;
+  }
+
+  isLastStep() {
+    return this.state.activeStep === this.totalSteps() - 1;
+  }
+
+  allStepsCompleted() {
+    return this.completedSteps() === this.totalSteps();
+  }
+
   handleNext = () => {
+    let activeStep;
+
+    if (this.isLastStep() && !this.allStepsCompleted()) {
+      // It's the last step, but not all steps have been completed - find the first step that has been completed
+      const steps = this.getSteps();
+      activeStep = steps.findIndex((step, i) => !(i in this.state.completed));
+    } else {
+      activeStep = this.state.activeStep + 1;
+    }
     this.setState({
-      activeStep: this.state.activeStep + 1,
+      activeStep,
     });
   };
 
@@ -48,14 +73,8 @@ class HorizontalNonLinearStepper extends Component {
     completed[this.state.activeStep] = true;
     this.setState({
       completed,
-      activeStep: this.state.activeStep + 1,
     });
-  }
-
-  handleFinish = () => {
-    this.setState({
-      activeStep: 4,
-    })
+    this.handleNext();
   }
 
   handleReset = () => {
@@ -72,13 +91,11 @@ class HorizontalNonLinearStepper extends Component {
   getStepContent(stepIndex) {
     switch (stepIndex) {
       case 0:
-        return "Select campaign settings...";
+        return "Step 1: Select campaign settings...";
       case 1:
-        return "What is an ad group anyways?";
+        return "Step 2: What is an ad group anyways?";
       case 2:
-        return "This is the bit I really care about!";
-      default:
-        return "You're a long way from home sonny jim!";
+        return "Step 3: This is the bit I really care about!";
     }
   }
 
@@ -99,7 +116,7 @@ class HorizontalNonLinearStepper extends Component {
           ))}
         </Stepper>
         <div>
-          {this.state.activeStep === steps.length + 1
+          {this.allStepsCompleted()
             ? <div>
                 <p>All steps completed - you're finished</p>
                 <Button onClick={this.handleReset}>
@@ -115,20 +132,19 @@ class HorizontalNonLinearStepper extends Component {
                   < Button raised color="primary" onClick={this.handleNext} className={classes.button}>
                     Next
                   </Button>
-                  {Object.keys(this.state.completed).length === 3 &&
-                    <Button raised color="primary" onClick={this.handleFinish} className={classes.button}>
-                      Finish
-                    </Button>
-                  }
                   {activeStep !== steps.length && (
                     this.state.completed[this.state.activeStep]
                       ? <Typography type="caption" className={classes.completed}>Step {activeStep + 1} already completed</Typography>
                       : <Button raised color="primary" onClick={this.handleComplete}>
-                          Complete Step
+                        {this.completedSteps() === this.totalSteps() - 1
+                          ? 'Finish'
+                          : 'Complete Step'
+                        }
                         </Button>
                   )}
                 </div>
-              </div>}
+              </div>
+          }
         </div>
       </div>
     );

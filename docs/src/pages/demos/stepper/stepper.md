@@ -30,6 +30,8 @@ components: MobileStepper
 
 The `<Stepper>` can be controlled by passing the current step index (zero based) as the `activeStep` prop. `<Stepper>` orientation is set using the `orientation` prop.
 
+This example also shows the use of an optional step by placing the `optional` prop on the second `<Step>` component. Note that it's up to you to manage when an optional step is skipped. Once you've determined this for a particular step you must set `completed={false}` to signify that even though the active step index has gone beyond the optional step, it's not actually complete.
+
 {{demo='pages/component-demos/stepper/HorizontalLinearStepper.js'}}
 
 
