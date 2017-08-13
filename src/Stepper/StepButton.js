@@ -37,6 +37,7 @@ function StepButton(props) {
     icon,
     iconContainerStyle,
     last, // eslint-disable-line no-unused-vars
+    optional,
     orientation,
     ...other
   } = props;
@@ -63,7 +64,8 @@ function StepButton(props) {
           disabled,
           icon,
           iconContainerStyle,
-          orientation
+          optional,
+          orientation,
         }
       )}
     </ButtonBase>
@@ -116,6 +118,10 @@ StepButton.propTypes = {
    * @ignore
    */
   last: PropTypes.bool,
+  /**
+   * @ignore
+   */
+  optional: PropTypes.bool,
   /**
    * @ignore
    */
