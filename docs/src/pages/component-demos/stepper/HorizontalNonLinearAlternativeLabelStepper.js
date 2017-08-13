@@ -22,26 +22,58 @@ const styleSheet = createStyleSheet("HorizontalLabelPositionBelowStepper", theme
   },
 }));
 
-class HorizontalLabelPositionBelowStepper extends Component {
+class HorizontalNonLinearAlternativeLabelStepper extends Component {
   state = {
     activeStep: 0,
-    completed: {},
+    completed: new Set(),
+    skipped: new Set(),
   };
-
-  completedSteps() {
-    return Object.keys(this.state.completed).length;
-  }
 
   totalSteps() {
     return this.getSteps().length;
+  }
+
+  isStepComplete(step) {
+    return this.state.completed.has(step);
+  }
+
+  completedSteps() {
+    return this.state.completed.size;
+  }
+
+  allStepsCompleted() {
+    return this.completedSteps() === this.totalSteps() - this.skippedSteps();
   }
 
   isLastStep() {
     return this.state.activeStep === this.totalSteps() - 1;
   }
 
-  allStepsCompleted() {
-    return this.completedSteps() === this.totalSteps();
+  isStepOptional(step) {
+    return step === 1;
+  }
+
+  isStepSkipped(step) {
+    return this.state.skipped.has(step);
+  }
+
+  handleSkip = () => {
+    const activeStep = this.state.activeStep;
+    if (!this.isStepOptional(activeStep)) {
+      // You probably want to guard against something like this - it should never occur unless someone's actively
+      // trying to break something.
+      throw new Error("You can't skip a step that isn't optional.")
+    }
+    const skipped = new Set(this.state.skipped.values());
+    skipped.add(activeStep);
+    this.setState({
+      activeStep: this.state.activeStep + 1,
+      skipped,
+    });
+  }
+
+  skippedSteps() {
+    return this.state.skipped.size;
   }
 
   handleNext = () => {
@@ -50,7 +82,7 @@ class HorizontalLabelPositionBelowStepper extends Component {
     if (this.isLastStep() && !this.allStepsCompleted()) {
       // It's the last step, but not all steps have been completed - find the first step that has been completed
       const steps = this.getSteps();
-      activeStep = steps.findIndex((step, i) => !(i in this.state.completed));
+      activeStep = steps.findIndex((step, i) => !this.state.completed.has(i));
     } else {
       activeStep = this.state.activeStep + 1;
     }
@@ -72,18 +104,21 @@ class HorizontalLabelPositionBelowStepper extends Component {
   }
 
   handleComplete = () => {
-    const completed = this.state.completed;
-    completed[this.state.activeStep] = true;
+    const completed = new Set(this.state.completed.values());
+    completed.add(this.state.activeStep);
     this.setState({
       completed,
     });
-    this.handleNext();
+    if (!this.allStepsCompleted()) {
+      this.handleNext();
+    }
   }
 
   handleReset = () => {
     this.setState({
       activeStep: 0,
-      completed: {},
+      completed: new Set(),
+      skipped: new Set(),
     });
   };
 
@@ -110,13 +145,22 @@ class HorizontalLabelPositionBelowStepper extends Component {
     return (
       <div className={classes.root}>
         <Stepper alternativeLabel nonLinear activeStep={activeStep}>
-          {steps.map((label, i) => (
-            <Step key={i}>
-              <StepButton onClick={this.handleStep(i)} completed={this.state.completed[i]}>
-                {label}
-              </StepButton>
-            </Step>
-          ))}
+          {steps.map((label, step) => {
+            const props = {};
+            if (this.isStepOptional(step)) {
+              props.optional = true;
+            }
+            if (this.isStepSkipped(step)) {
+              props.completed = false;
+            }
+            return (
+              <Step key={step} {...props}>
+                <StepButton onClick={this.handleStep(step)} completed={this.isStepComplete(step)}>
+                  {label}
+                </StepButton>
+              </Step>
+            );
+          })}
         </Stepper>
         <div>
           {this.allStepsCompleted()
@@ -135,8 +179,13 @@ class HorizontalLabelPositionBelowStepper extends Component {
                   < Button raised color="primary" onClick={this.handleNext} className={classes.button}>
                     Next
                   </Button>
+                  {this.isStepOptional(activeStep) &&
+                    <Button raised color="primary" onClick={this.handleSkip} className={classes.button}>
+                      Skip
+                    </Button>
+                  }
                   {activeStep !== steps.length && (
-                    this.state.completed[this.state.activeStep]
+                    this.state.completed.has(this.state.activeStep)
                       ? <Typography type="caption" className={classes.completed}>Step {activeStep + 1} already completed</Typography>
                       : <Button raised color="primary" onClick={this.handleComplete}>
                         {this.completedSteps() === this.totalSteps() - 1
@@ -154,8 +203,8 @@ class HorizontalLabelPositionBelowStepper extends Component {
   }
 }
 
-HorizontalLabelPositionBelowStepper.propTypes = {
+HorizontalNonLinearAlternativeLabelStepper.propTypes = {
   classes: PropTypes.object
 };
 
-export default withStyles(styleSheet)(HorizontalLabelPositionBelowStepper);
+export default withStyles(styleSheet)(HorizontalNonLinearAlternativeLabelStepper);
