@@ -60,6 +60,7 @@ function StepLabel(props) {
     completed,
     disabled,
     icon,
+    iconContainerClassName: iconContainerClassNameProp,
     orientation,
     alternativeLabel,
     last,
@@ -85,11 +86,17 @@ function StepLabel(props) {
       [classes.completed]: completed,
     }
   );
+  const iconContainerClassName = classNames(
+    {
+      [classes.iconContainer]: !alternativeLabel,
+    },
+    iconContainerClassNameProp,
+  );
 
   return (
     <span className={className} {...other}>
       {icon && (
-        <span className={alternativeLabel ? null : classes.iconContainer}>
+        <span className={iconContainerClassName}>
           <StepIcon
             completed={completed}
             active={active}

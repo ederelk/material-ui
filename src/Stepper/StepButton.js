@@ -35,7 +35,7 @@ function StepButton(props) {
     classes,
     disabled,
     icon,
-    iconContainerStyle,
+    iconContainerClassName,
     last, // eslint-disable-line no-unused-vars
     optional,
     orientation,
@@ -63,7 +63,7 @@ function StepButton(props) {
           completed,
           disabled,
           icon,
-          iconContainerStyle,
+          iconContainerClassName,
           optional,
           orientation,
         }
@@ -113,7 +113,7 @@ StepButton.propTypes = {
   /**
    * Override the inline-styles of the icon container element.
    */
-  iconContainerStyle: PropTypes.object,
+  iconContainerClassName: PropTypes.string,
   /**
    * @ignore
    */
