@@ -12,8 +12,6 @@ export const styleSheet = createStyleSheet("MuiStepLabel", theme => ({
   root: {
     display: 'flex',
     alignItems: 'center',
-    paddingLeft: 14,
-    paddingRight: 14,
   },
   horizontal: {
     // height: 72,

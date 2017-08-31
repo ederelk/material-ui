@@ -15,8 +15,8 @@ export const styleSheet = createStyleSheet("MuiStepConnector", theme => ({
     borderColor: theme.palette.line.stepper,
   },
   rootVertical: {
-    marginLeft: theme.spacing.unit + 4,
-    padding: `${theme.spacing.unit}px 0`,
+    marginLeft: 12, // half icon
+    padding: `0 0 ${theme.spacing.unit}px`,
   },
   lineHorizontal: {
     marginLeft: -6,
@@ -26,7 +26,7 @@ export const styleSheet = createStyleSheet("MuiStepConnector", theme => ({
   lineVertical: {
     borderLeftStyle: "solid",
     borderLeftWidth: 1,
-    minHeight: 28,
+    minHeight: 24,
   },
   alternativeLabelRoot: {
     position: "absolute",
@@ -89,7 +89,7 @@ StepConnector.propTypes = {
   /**
    * @ignore
    */
-  orientation: PropTypes.oneOf(["horizontal", "vertical"]).isRequired
+  orientation: PropTypes.oneOf(["horizontal", "vertical"]).isRequired,
 };
 
 export default withStyles(styleSheet)(StepConnector);

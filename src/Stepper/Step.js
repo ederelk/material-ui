@@ -11,10 +11,8 @@ export const styleSheet = createStyleSheet("MuiStep", theme => ({
     flex: "0 0 auto"
   },
   horizontal: {
-    marginLeft: -6,
   },
   vertical: {
-    marginLeft: -14,
   },
   alternativeLabel: {
     flex: 1,

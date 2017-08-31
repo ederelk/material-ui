@@ -3,16 +3,25 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles, createStyleSheet } from "material-ui/styles";
-import { Step, Stepper, StepLabel } from "material-ui/Stepper";
+import { Step, Stepper, StepLabel, StepContent } from "material-ui/Stepper";
 import Button from "material-ui/Button";
+import Paper from "material-ui/Paper";
+import Typography from "material-ui/Typography";
 
 const styleSheet = createStyleSheet("VerticalLinearStepper", theme => ({
   root: {
     width: '90%'
   },
-  backButton: {
-    marginRight: theme.spacing.unit
-  }
+  button: {
+    marginRight: theme.spacing.unit,
+  },
+  actionsContainer: {
+    marginTop: theme.spacing.unit,
+  },
+  resetContainer: {
+    marginTop: 0,
+    padding: theme.spacing.unit * 3, // TODO: See TODO note on Stepper
+  },
 }));
 
 class VerticalLinearStepper extends Component {
@@ -45,11 +54,16 @@ class VerticalLinearStepper extends Component {
   getStepContent(stepIndex) {
     switch (stepIndex) {
       case 0:
-        return "Select campaign settings...";
+        return `For each ad campaign that you create, you can control how much
+                you're willing to spend on clicks and conversions, which networks
+                and geographical locations you want your ads to show on, and more.`;
       case 1:
-        return "What is an ad group anyways?";
+        return "An ad group contains one or more ads which target a shared set of keywords.";
       case 2:
-        return "This is the bit I really care about!";
+        return `Try out different ad text to see what brings in the most customers,
+                and learn how to enhance your ads using features like ad extensions.
+                If you run into any problems with your ads, find out how to tell if
+                they're running and how to resolve approval issues.`;
     }
   }
 
@@ -61,33 +75,33 @@ class VerticalLinearStepper extends Component {
     return (
       <div className={classes.root}>
         <Stepper activeStep={activeStep} orientation="vertical">
-          {steps.map((label, i) => (
-            <Step key={i}>
+          {steps.map((label, step) => (
+            <Step key={step}>
               <StepLabel>{label}</StepLabel>
+              <StepContent>
+                <Typography type="body1">{this.getStepContent(step)}</Typography>
+                <div className={classes.actionsContainer}>
+                  <div>
+                    <Button disabled={activeStep === 0} onClick={this.handleBack} className={classes.button}>
+                      Back
+                    </Button>
+                    <Button raised color="primary" onClick={this.handleNext} className={classes.button}>
+                      {activeStep === steps.length - 1 ? "Finish" : "Next"}
+                    </Button>
+                  </div>
+                </div>
+              </StepContent>
             </Step>
           ))}
         </Stepper>
-        <div>
-          {activeStep === steps.length
-            ? <div>
-                <p>All steps completed - you're finished</p>
-                <Button onClick={this.handleReset} className={classes.button}>
-                  Reset
-                </Button>
-              </div>
-            : <div>
-                <p>{this.getStepContent(activeStep)}</p>
-                <div>
-                  <Button disabled={activeStep === 0} onClick={this.handleBack} className={classes.button}>
-                    Back
-                  </Button>
-                  <Button raised color="primary" onClick={this.handleNext} className={classes.button}>
-                    {activeStep === steps.length - 1 ? "Finish" : "Next"}
-                  </Button>
-                </div>
-              </div>
-          }
-        </div>
+        {activeStep === steps.length &&
+          <Paper square elevation={0} className={classes.resetContainer}>
+            <Typography type="body1">All steps completed - you're finished</Typography>
+            <Button onClick={this.handleReset} className={classes.button}>
+              Reset
+            </Button>
+          </Paper>
+        }
       </div>
     );
   }
