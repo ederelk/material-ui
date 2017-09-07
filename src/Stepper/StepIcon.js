@@ -1,16 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { createStyleSheet } from "jss-theme-reactor";
 import CheckCircle from "material-ui-icons/CheckCircle";
 import withStyles from "../styles/withStyles";
 import StepPositionIcon from './StepPositionIcon';
 
-export const styleSheet = createStyleSheet("MuiStepIcon", theme => ({
+export const styles = theme => ({
   root: {
     fill: theme.palette.primary[500],
     display: "block",
   },
-}));
+});
 
 function StepIcon(props) {
   const { completed, icon, active, classes, theme } = props;
@@ -52,4 +51,4 @@ StepIcon.propTypes = {
   ]),
 };
 
-export default withStyles(styleSheet)(StepIcon);
+export default withStyles(styles)(StepIcon);

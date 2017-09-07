@@ -1,12 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { createStyleSheet } from "jss-theme-reactor";
 import withStyles from "../styles/withStyles";
 import SvgIcon from "../SvgIcon";
 import { compose } from "recompose";
 
-export const styleSheet = createStyleSheet("MuiStepPositionIcon", theme => ({
+export const styles = theme => ({
   root: {
     fill: theme.palette.action.disabled,
     display: "block",
@@ -18,7 +17,7 @@ export const styleSheet = createStyleSheet("MuiStepPositionIcon", theme => ({
   active: {
     fill: theme.palette.primary[500],
   },
-}));
+});
 
 function StepPositionIcon(props) {
   const { position, classes, active } = props;
@@ -51,4 +50,4 @@ StepPositionIcon.propTypes = {
   position: PropTypes.number.isRequired,
 };
 
-export default withStyles(styleSheet)(StepPositionIcon);
+export default withStyles(styles)(StepPositionIcon);

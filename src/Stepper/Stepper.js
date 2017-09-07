@@ -3,12 +3,11 @@
 import React, { Children } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { createStyleSheet } from "jss-theme-reactor";
 import withStyles from "../styles/withStyles";
 import Paper from "../Paper";
 import StepConnector from "./StepConnector";
 
-export const styleSheet = createStyleSheet("MuiStepper", theme => ({
+export const styles = theme => ({
   root: {
     display: "flex",
     padding: theme.spacing.unit * 3, // TODO: Question: Guidelines state 24px, should we use `theme.spacing.unit * 3`?
@@ -25,7 +24,7 @@ export const styleSheet = createStyleSheet("MuiStepper", theme => ({
     flexDirection: "column",
     alignItems: "stretch",
   },
-}));
+});
 
 function Stepper(props) {
   const {
@@ -128,4 +127,4 @@ Stepper.defaultProps = {
   orientation: "horizontal",
 };
 
-export default withStyles(styleSheet)(Stepper);
+export default withStyles(styles)(Stepper);

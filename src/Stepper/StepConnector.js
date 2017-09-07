@@ -3,10 +3,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { createStyleSheet } from "jss-theme-reactor";
 import withStyles from "../styles/withStyles";
 
-export const styleSheet = createStyleSheet("MuiStepConnector", theme => ({
+export const styles = theme => ({
   root: {
     flex: "1 1 auto"
   },
@@ -37,7 +36,7 @@ export const styleSheet = createStyleSheet("MuiStepConnector", theme => ({
   alternativeLabelLine: {
     marginLeft: 0,
   }
-}));
+});
 
 function StepConnector(props) {
   const {
@@ -92,4 +91,4 @@ StepConnector.propTypes = {
   orientation: PropTypes.oneOf(["horizontal", "vertical"]).isRequired,
 };
 
-export default withStyles(styleSheet)(StepConnector);
+export default withStyles(styles)(StepConnector);

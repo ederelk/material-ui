@@ -3,12 +3,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { createStyleSheet } from "jss-theme-reactor";
 import withStyles from "../styles/withStyles";
 import Typography from '../Typography';
 import StepIcon from './StepIcon';
 
-export const styleSheet = createStyleSheet("MuiStepLabel", theme => ({
+export const styles = theme => ({
   root: {
     display: 'flex',
     alignItems: 'center',
@@ -50,7 +49,7 @@ export const styleSheet = createStyleSheet("MuiStepLabel", theme => ({
   alternativeLabelIconContainer: {
     alignItems: 'center',
   },
-}));
+});
 
 function StepLabel(props) {
   const {
@@ -158,4 +157,4 @@ StepLabel.propTypes = {
   orientation: PropTypes.oneOf(["horizontal", "vertical"]).isRequired,
 };
 
-export default withStyles(styleSheet)(StepLabel);
+export default withStyles(styles)(StepLabel);

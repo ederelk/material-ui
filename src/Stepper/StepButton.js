@@ -3,16 +3,15 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { createStyleSheet } from "jss-theme-reactor";
 import withStyles from "../styles/withStyles";
-import ButtonBase from '../internal/ButtonBase';
+import ButtonBase from '../ButtonBase';
 import StepLabel from './StepLabel';
 
 const isLabel = (child) => {
   return child && child.type && child.type.muiName === 'StepLabel';
 };
 
-export const styleSheet = createStyleSheet("MuiStepButton", theme => ({
+export const styles = theme => ({
   root: {
     display: 'flex',
     alignItems: 'center',
@@ -23,7 +22,7 @@ export const styleSheet = createStyleSheet("MuiStepButton", theme => ({
   alternativeLabelRoot: {
     margin: '0 auto',
   }
-}));
+});
 
 function StepButton(props) {
   const {
@@ -128,4 +127,4 @@ StepButton.propTypes = {
   orientation: PropTypes.oneOf(["horizontal", "vertical"]).isRequired,
 };
 
-export default withStyles(styleSheet)(StepButton);
+export default withStyles(styles)(StepButton);

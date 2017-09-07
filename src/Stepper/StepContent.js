@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import warning from 'warning';
 import classNames from "classnames";
-import { createStyleSheet } from "jss-theme-reactor";
 import TransitionComponent from '../internal/ExpandTransition';
 import withStyles from "../styles/withStyles";
 
@@ -10,7 +9,7 @@ function ExpandTransition(props) {
   return <TransitionComponent {...props} />;
 }
 
-export const styleSheet = createStyleSheet("MuiStepContent", theme => ({
+export const styles = theme => ({
   root: {
     marginTop: theme.spacing.unit,
     marginLeft: 12, // half icon
@@ -24,7 +23,7 @@ export const styleSheet = createStyleSheet("MuiStepContent", theme => ({
   last: {
     borderLeft: 'none',
   }
-}));
+});
 
 
 function StepContent(props) {
@@ -111,4 +110,4 @@ StepContent.defaultProps = {
   transitionDuration: 450,
 };
 
-export default withStyles(styleSheet)(StepContent);
+export default withStyles(styles)(StepContent);

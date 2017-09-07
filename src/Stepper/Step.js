@@ -3,10 +3,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { createStyleSheet } from "jss-theme-reactor";
 import withStyles from "../styles/withStyles";
 
-export const styleSheet = createStyleSheet("MuiStep", theme => ({
+export const styles = theme => ({
   root: {
     flex: "0 0 auto"
   },
@@ -19,7 +18,7 @@ export const styleSheet = createStyleSheet("MuiStep", theme => ({
     position: "relative",
     marginLeft: 0,
   }
-}));
+});
 
 function Step(props) {
   const {
@@ -115,4 +114,4 @@ Step.propTypes = {
   orientation: PropTypes.oneOf(["horizontal", "vertical"]).isRequired,
 };
 
-export default withStyles(styleSheet)(Step);
+export default withStyles(styles)(Step);
