@@ -1,13 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
+import classNames from "classnames";
 import CheckCircle from "material-ui-icons/CheckCircle";
 import withStyles from "../styles/withStyles";
 import StepPositionIcon from './StepPositionIcon';
 
 export const styles = theme => ({
   root: {
-    fill: theme.palette.primary[500],
     display: "block",
+  },
+  completed: {
+    fill: theme.palette.primary[500],
   },
 });
 
@@ -17,7 +20,7 @@ function StepIcon(props) {
 
   if (iconType === "number" || iconType === "string") {
     if (completed) {
-      return <CheckCircle className={classes.root} />;
+      return <CheckCircle className={classNames(classes.root, classes.completed)} />;
     }
     return (
       <StepPositionIcon
