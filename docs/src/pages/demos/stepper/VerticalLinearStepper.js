@@ -2,13 +2,13 @@
 
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { withStyles, createStyleSheet } from "material-ui/styles";
+import { withStyles } from "material-ui/styles";
 import { Step, Stepper, StepLabel, StepContent } from "material-ui/Stepper";
 import Button from "material-ui/Button";
 import Paper from "material-ui/Paper";
 import Typography from "material-ui/Typography";
 
-const styleSheet = createStyleSheet("VerticalLinearStepper", theme => ({
+const styles = theme => ({
   root: {
     width: '90%'
   },
@@ -22,7 +22,7 @@ const styleSheet = createStyleSheet("VerticalLinearStepper", theme => ({
     marginTop: 0,
     padding: theme.spacing.unit * 3, // TODO: See TODO note on Stepper
   },
-}));
+});
 
 class VerticalLinearStepper extends Component {
   state = {
@@ -111,4 +111,4 @@ VerticalLinearStepper.propTypes = {
   classes: PropTypes.object
 };
 
-export default withStyles(styleSheet)(VerticalLinearStepper);
+export default withStyles(styles)(VerticalLinearStepper);

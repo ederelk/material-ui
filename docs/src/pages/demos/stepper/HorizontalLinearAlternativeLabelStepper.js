@@ -2,18 +2,18 @@
 
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { withStyles, createStyleSheet } from "material-ui/styles";
+import { withStyles } from "material-ui/styles";
 import { Step, Stepper, StepLabel, StepButton } from "material-ui/Stepper";
 import Button from "material-ui/Button";
 
-const styleSheet = createStyleSheet("HorizontalLabelPositionBelowStepper", theme => ({
+const styles = theme => ({
   root: {
     width: '90%'
   },
   backButton: {
     marginRight: theme.spacing.unit
   }
-}));
+});
 
 class HorizontalLabelPositionBelowStepper extends Component {
   state = {
@@ -96,4 +96,4 @@ HorizontalLabelPositionBelowStepper.propTypes = {
   classes: PropTypes.object
 };
 
-export default withStyles(styleSheet)(HorizontalLabelPositionBelowStepper);
+export default withStyles(styles)(HorizontalLabelPositionBelowStepper);

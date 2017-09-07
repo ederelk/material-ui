@@ -2,25 +2,31 @@
 
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { withStyles, createStyleSheet } from "material-ui/styles";
+import { withStyles } from "material-ui/styles";
 import { Step, Stepper, StepLabel } from "material-ui/Stepper";
 import Button from "material-ui/Button";
 
-const styleSheet = createStyleSheet("HorizontalLinearStepper", theme => ({
+const styles = theme => ({
   root: {
     width: '90%'
   },
   button: {
     marginRight: theme.spacing.unit
   }
-}));
+});
 
 
 class HorizontalLinearStepper extends Component {
+
+  static propTypes = {
+    classes: PropTypes.object
+  }
+
   state = {
     activeStep: 0,
     skipped: new Set(),
   };
+
 
   isStepOptional(step) {
     return step === 1;
@@ -139,8 +145,4 @@ class HorizontalLinearStepper extends Component {
   }
 }
 
-HorizontalLinearStepper.propTypes = {
-  classes: PropTypes.object
-};
-
-export default withStyles(styleSheet)(HorizontalLinearStepper);
+export default withStyles(styles)(HorizontalLinearStepper);
