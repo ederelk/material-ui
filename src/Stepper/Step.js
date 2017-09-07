@@ -10,6 +10,14 @@ export const styles = theme => ({
     flex: "0 0 auto"
   },
   horizontal: {
+    paddingLeft: theme.spacing.unit,
+    paddingRight: theme.spacing.unit,
+    '&:first-child': {
+      paddingLeft: 0,
+    },
+    '&:last-child': {
+      paddingRight: 0,
+    },
   },
   vertical: {
   },

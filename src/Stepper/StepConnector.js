@@ -18,7 +18,6 @@ export const styles = theme => ({
     padding: `0 0 ${theme.spacing.unit}px`,
   },
   lineHorizontal: {
-    marginLeft: -6,
     borderTopStyle: "solid",
     borderTopWidth: 1
   },

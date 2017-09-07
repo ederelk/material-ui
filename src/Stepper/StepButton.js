@@ -15,8 +15,8 @@ export const styles = theme => ({
   root: {
     display: 'flex',
     alignItems: 'center',
-    paddingLeft: 14,
-    paddingRight: 14,
+    paddingLeft: 0,
+    paddingRight: 0,
     background: 'none',
   },
   alternativeLabelRoot: {
