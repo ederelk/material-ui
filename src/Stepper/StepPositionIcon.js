@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import withStyles from "../styles/withStyles";
 import SvgIcon from "../SvgIcon";
-import { compose } from "recompose";
 
 export const styles = theme => ({
   root: {

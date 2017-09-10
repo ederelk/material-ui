@@ -25,7 +25,6 @@ function StepIcon(props) {
     return (
       <StepPositionIcon
         theme={theme}
-        classes={classes}
         position={icon}
         active={active}
       />
