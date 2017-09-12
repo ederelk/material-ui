@@ -64,7 +64,7 @@ class HorizontalNonLinearAlternativeLabelStepper extends Component {
       // trying to break something.
       throw new Error("You can't skip a step that isn't optional.")
     }
-    const skipped = new Set(this.state.skipped.values());
+    const skipped = new Set(this.state.skipped);
     skipped.add(activeStep);
     this.setState({
       activeStep: this.state.activeStep + 1,
@@ -104,7 +104,7 @@ class HorizontalNonLinearAlternativeLabelStepper extends Component {
   }
 
   handleComplete = () => {
-    const completed = new Set(this.state.completed.values());
+    const completed = new Set(this.state.completed);
     completed.add(this.state.activeStep);
     this.setState({
       completed,
