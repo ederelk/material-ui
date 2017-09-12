@@ -1,13 +1,10 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import warning from 'warning';
 import classNames from "classnames";
-import TransitionComponent from '../internal/ExpandTransition';
+import Collapse from '../transitions/Collapse';
 import withStyles from "../styles/withStyles";
 
-function ExpandTransition(props) {
-  return <TransitionComponent {...props} />;
-}
 
 export const styles = theme => ({
   root: {
@@ -29,15 +26,16 @@ export const styles = theme => ({
 function StepContent(props) {
   const {
     active,
+    alternativeLabel, // estline-disable-line no-unused-vars
     children,
     className: classNameProp,
     classes,
     completed, // eslint-disable-line no-unused-vars
-    last, // eslint-disable-line no-unused-vars
+    last,
     transition,
     transitionDuration,
     orientation,
-    ...other
+    optional, // eslint-disable-line no-unused-vars
   } = props;
 
   if (orientation !== 'vertical') {
@@ -54,14 +52,14 @@ function StepContent(props) {
   );
 
   const transitionProps = {
-    enterDelay: transitionDuration,
+    in: active,
     transitionDuration: transitionDuration,
-    open: active,
+    unmountOnExit: true,
   };
 
   return (
-    <div className={className} {...other}>
-      {React.createElement(transition, transitionProps, <div style={{overflow: 'hidden'}}>{children}</div>)}
+    <div className={className}>
+      {React.createElement(transition, transitionProps, children)}
     </div>
   );
 }
@@ -71,6 +69,11 @@ StepContent.propTypes = {
    * Expands the content
    */
   active: PropTypes.bool,
+  /**
+   * @ignore
+   * Set internally by Step when it's supplied with the alternativeLabel prop.
+   */
+  alternativeLabel: PropTypes.bool,
   /**
    * Step content
    */
@@ -96,18 +99,23 @@ StepContent.propTypes = {
    */
   orientation: PropTypes.oneOf(["vertical"]).isRequired,
   /**
-   * ReactTransitionGroup component.
+   * @ignore
+   * Set internally by Step when it's supplied with the optional prop.
+   */
+  optional: PropTypes.bool,
+  /**
+   * Collapse component.
    */
   transition: PropTypes.func,
   /**
    * Adjust the duration of the content expand transition. Passed as a prop to the transition component.
    */
-  transitionDuration: PropTypes.number,
+  transitionDuration: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 StepContent.defaultProps = {
-  transition: ExpandTransition,
-  transitionDuration: 450,
+  transition: Collapse,
+  transitionDuration: 'auto',
 };
 
 export default withStyles(styles)(StepContent);
