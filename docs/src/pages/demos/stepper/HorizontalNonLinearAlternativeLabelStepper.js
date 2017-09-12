@@ -109,7 +109,11 @@ class HorizontalNonLinearAlternativeLabelStepper extends Component {
     this.setState({
       completed,
     });
-    if (!this.allStepsCompleted()) {
+    /**
+     * Sigh... it would be much nicer to replace the following if conditional with `if (!this.allStepsComplete())`
+     * however state is not set when we do this, thus we have to resort to not being very DRY.
+     */
+    if (completed.size !== this.totalSteps() - this.skippedSteps()) {
       this.handleNext();
     }
   }
