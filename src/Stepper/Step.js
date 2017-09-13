@@ -66,7 +66,7 @@ function Step(props) {
           },
         )
       )}
-      {alternativeLabel && !last &&
+      {connector && alternativeLabel && !last &&
         React.cloneElement(connector, { orientation, alternativeLabel })
       }
     </div>

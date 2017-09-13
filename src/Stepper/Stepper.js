@@ -40,7 +40,7 @@ function Stepper(props) {
     alternativeLabel ? null : classes[orientation],
   );
 
-  const connector = React.cloneElement(connectorProp, { orientation });
+  const connector = connectorProp ? React.cloneElement(connectorProp, { orientation }) : null;
   const numChildren = Children.count(children);
   const steps = Children.map(children, (step, index) => {
     const controlProps = {
