@@ -16,7 +16,7 @@ export const styles = theme => ({
     // height: 72,
   },
   vertical: {
-    height: -64,
+    // height: -64,
   },
   active: {
     fontWeight: 500,
@@ -27,27 +27,15 @@ export const styles = theme => ({
   disabled: {
     cursor: 'default',
   },
-  icon: {
-    color: theme.palette.primary[500],
-    display: 'block',
-    fontSize: 24,
-    width: 24,
-    height: 24,
-  },
   iconContainer: {
-    paddingRight: 8,
+    paddingRight: theme.spacing.unit,
   },
   alternativeLabelRoot: {
     flexDirection: 'column',
-    justifyContent: 'flex-top',
-    margin: '0 auto',
   },
   alternativeLabel: {
     textAlign: 'center',
     marginTop: theme.spacing.unit * 2,
-  },
-  alternativeLabelIconContainer: {
-    alignItems: 'center',
   },
 });
 

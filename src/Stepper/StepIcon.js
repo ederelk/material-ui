@@ -7,7 +7,6 @@ import StepPositionIcon from './StepPositionIcon';
 
 export const styles = theme => ({
   root: {
-    display: "block",
   },
   completed: {
     fill: theme.palette.primary[500],

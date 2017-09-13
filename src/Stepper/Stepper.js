@@ -10,11 +10,7 @@ import StepConnector from "./StepConnector";
 export const styles = theme => ({
   root: {
     display: "flex",
-    padding: theme.spacing.unit * 3, // TODO: Question: Guidelines state 24px, should we use `theme.spacing.unit * 3`?
-  },
-  nonAlternativeLabel: {
-    alignContent: "center",
-    justifyContent: "space-between",
+    padding: theme.spacing.unit * 3, // TODO: Guidelines state 24px, should we use `theme.spacing.unit * 3` or 24px?
   },
   horizontal: {
     flexDirection: "row",
@@ -22,7 +18,6 @@ export const styles = theme => ({
   },
   vertical: {
     flexDirection: "column",
-    alignItems: "stretch",
   },
 });
 
@@ -42,7 +37,6 @@ function Stepper(props) {
   const className = classNames(
     classes.root,
     classNameProp,
-    alternativeLabel ? null : classes.nonAlternativeLabel,
     alternativeLabel ? null : classes[orientation],
   );
 

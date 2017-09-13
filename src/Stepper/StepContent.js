@@ -10,11 +10,8 @@ export const styles = theme => ({
   root: {
     marginTop: theme.spacing.unit,
     marginLeft: 12, // half icon
-    marginBottom: 0,
-    paddingTop: 0,
     paddingLeft: theme.spacing.unit + 12, // margin + half icon
     paddingRight: theme.spacing.unit,
-    overflow: 'hidden',
     borderLeft: `1px solid ${theme.palette.line.stepper}`,
   },
   last: {
