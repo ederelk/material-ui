@@ -1,17 +1,17 @@
 // @flow weak
 
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import withStyles from "../styles/withStyles";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import withStyles from '../styles/withStyles';
 import ButtonBase from '../ButtonBase';
 import StepLabel from './StepLabel';
 
-const isLabel = (child) => {
+const isLabel = child => {
   return child && child.type && child.type.muiName === 'StepLabel';
 };
 
-export const styles = theme => ({
+export const styles = () => ({
   root: {
     display: 'flex',
     alignItems: 'center',
@@ -21,7 +21,7 @@ export const styles = theme => ({
   },
   alternativeLabelRoot: {
     margin: '0 auto',
-  }
+  },
 });
 
 function StepButton(props) {
@@ -43,30 +43,23 @@ function StepButton(props) {
 
   const className = classNames(
     classes.root,
-    [classes.alternativeLabelRoot]: alternativeLabel,
+    ([classes.alternativeLabelRoot]: alternativeLabel),
     classNameProp,
   );
   const child = isLabel(children) ? children : <StepLabel>{children}</StepLabel>;
 
   return (
-    <ButtonBase
-      disabled={disabled}
-      className={className}
-      {...other}
-    >
-      {React.cloneElement(
-        child,
-        {
-          active,
-          alternativeLabel,
-          completed,
-          disabled,
-          icon,
-          iconContainerClassName,
-          optional,
-          orientation,
-        }
-      )}
+    <ButtonBase disabled={disabled} className={className} {...other}>
+      {React.cloneElement(child, {
+        active,
+        alternativeLabel,
+        completed,
+        disabled,
+        icon,
+        iconContainerClassName,
+        optional,
+        orientation,
+      })}
     </ButtonBase>
   );
 }
@@ -104,11 +97,7 @@ StepButton.propTypes = {
   /**
    * The icon displayed by the step label.
    */
-  icon: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.string,
-    PropTypes.number,
-  ]),
+  icon: PropTypes.oneOfType([PropTypes.element, PropTypes.string, PropTypes.number]),
   /**
    * Override the inline-styles of the icon container element.
    */
@@ -124,7 +113,7 @@ StepButton.propTypes = {
   /**
    * @ignore
    */
-  orientation: PropTypes.oneOf(["horizontal", "vertical"]).isRequired,
+  orientation: PropTypes.oneOf(['horizontal', 'vertical']).isRequired,
 };
 
 export default withStyles(styles)(StepButton);

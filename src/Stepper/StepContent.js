@@ -1,10 +1,11 @@
+// @flow weak
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import warning from 'warning';
-import classNames from "classnames";
+import classNames from 'classnames';
 import Collapse from '../transitions/Collapse';
-import withStyles from "../styles/withStyles";
-
+import withStyles from '../styles/withStyles';
 
 export const styles = theme => ({
   root: {
@@ -16,14 +17,13 @@ export const styles = theme => ({
   },
   last: {
     borderLeft: 'none',
-  }
+  },
 });
-
 
 function StepContent(props) {
   const {
     active,
-    alternativeLabel, // estline-disable-line no-unused-vars
+    alternativeLabel, // eslint-disable-line no-unused-vars
     children,
     className: classNameProp,
     classes,
@@ -36,7 +36,10 @@ function StepContent(props) {
   } = props;
 
   if (orientation !== 'vertical') {
-    warning(false, 'Material-UI: <StepContent /> is only designed for use with the vertical stepper.');
+    warning(
+      false,
+      'Material-UI: <StepContent /> is only designed for use with the vertical stepper.',
+    );
     return null;
   }
 
@@ -45,19 +48,17 @@ function StepContent(props) {
     {
       [classes.last]: last,
     },
-    classNameProp
+    classNameProp,
   );
 
   const transitionProps = {
     in: active,
-    transitionDuration: transitionDuration,
+    transitionDuration,
     unmountOnExit: true,
   };
 
   return (
-    <div className={className}>
-      {React.createElement(transition, transitionProps, children)}
-    </div>
+    <div className={className}>{React.createElement(transition, transitionProps, children)}</div>
   );
 }
 
@@ -93,19 +94,20 @@ StepContent.propTypes = {
   last: PropTypes.bool,
   /**
    * @ignore
-   */
-  orientation: PropTypes.oneOf(["vertical"]).isRequired,
-  /**
-   * @ignore
    * Set internally by Step when it's supplied with the optional prop.
    */
   optional: PropTypes.bool,
+  /**
+   * @ignore
+   */
+  orientation: PropTypes.oneOf(['vertical']).isRequired,
   /**
    * Collapse component.
    */
   transition: PropTypes.func,
   /**
-   * Adjust the duration of the content expand transition. Passed as a prop to the transition component.
+   * Adjust the duration of the content expand transition. 
+   * Passed as a prop to the transition component.
    */
   transitionDuration: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };

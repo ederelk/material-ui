@@ -1,3 +1,4 @@
+// @flow weak
 /* eslint-env mocha */
 import React from 'react';
 import { assert } from 'chai';
@@ -22,11 +23,11 @@ describe('<Step />', () => {
   it('merges styles and other props into the root node', () => {
     const wrapper = shallow(
       <Step
-        style={{paddingRight: 200, color: 'purple', border: '1px solid tomato'}}
-        role="hello"
-      />
+        style={{ paddingRight: 200, color: 'purple', border: '1px solid tomato' }}
+        role="Menuitem"
+      />,
     );
-    const {style, role} = wrapper.props();
+    const { style, role } = wrapper.props();
     assert.strictEqual(style.paddingRight, 200);
     assert.strictEqual(style.color, 'purple');
     assert.strictEqual(style.border, '1px solid tomato');
@@ -36,30 +37,27 @@ describe('<Step />', () => {
   describe('rendering children', () => {
     it('renders children', () => {
       const children = <h1 className="hello-world">Hello World</h1>;
-      const wrapper = shallow(
-        <Step label="Step One">{children}</Step>
-      );
+      const wrapper = shallow(<Step label="Step One">{children}</Step>);
       assert.strictEqual(wrapper.find('.hello-world').length, 1);
     });
 
     it('renders children with all props passed through', () => {
       const children = [
-        <h1 key={1} className="hello-world">Hello World</h1>,
-        <p key={2} className="hay">How are you?</p>,
+        <h1 key={1} className="hello-world">
+          Hello World
+        </h1>,
+        <p key={2} className="hay">
+          How are you?
+        </p>,
       ];
       const wrapper = shallow(
-        <Step
-          active={false}
-          completed={true}
-          disabled={true}
-          index={0}
-        >
+        <Step active={false} completed disabled index={0}>
           {children}
-        </Step>
+        </Step>,
       );
       const child1 = wrapper.find('.hello-world');
       const child2 = wrapper.find('.hay');
-      [child1, child2].forEach((child) => {
+      [child1, child2].forEach(child => {
         assert.strictEqual(child.length, 1);
         assert.strictEqual(child.prop('active'), false);
         assert.strictEqual(child.prop('completed'), true);
@@ -70,10 +68,14 @@ describe('<Step />', () => {
 
     it('honours children overriding props passed through', () => {
       const children = (
-        <h1 active={false} className="hello-world">Hello World</h1>
+        <h1 active={false} className="hello-world">
+          Hello World
+        </h1>
       );
       const wrapper = shallow(
-        <Step active={true} label="Step One">{children}</Step>
+        <Step active label="Step One">
+          {children}
+        </Step>,
       );
       const childWrapper = wrapper.find('.hello-world');
       assert.strictEqual(childWrapper.prop('active'), false);

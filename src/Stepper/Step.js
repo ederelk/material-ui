@@ -1,13 +1,13 @@
 // @flow weak
 
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import withStyles from "../styles/withStyles";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import withStyles from '../styles/withStyles';
 
 export const styles = theme => ({
   root: {
-    flex: "0 0 auto"
+    flex: '0 0 auto',
   },
   horizontal: {
     paddingLeft: theme.spacing.unit,
@@ -21,9 +21,9 @@ export const styles = theme => ({
   },
   alternativeLabel: {
     flex: 1,
-    position: "relative",
+    position: 'relative',
     marginLeft: 0,
-  }
+  },
 });
 
 function Step(props) {
@@ -42,33 +42,29 @@ function Step(props) {
     ...other
   } = props;
 
-  const className = classNames(
-    classes.root,
-    classes[orientation],
-    { [classes.alternativeLabel]: alternativeLabel },
-  );
+  const className = classNames(classes.root, classes[orientation], {
+    [classes.alternativeLabel]: alternativeLabel,
+  });
 
   return (
     <div className={className} {...other}>
       {React.Children.map(children, child =>
-        React.cloneElement(
-          child,
-          {
-            active,
-            alternativeLabel,
-            completed,
-            disabled,
-            icon: index + 1,
-            last,
-            orientation,
-            optional,
-            ...child.props,
-          },
-        )
+        React.cloneElement(child, {
+          active,
+          alternativeLabel,
+          completed,
+          disabled,
+          icon: index + 1,
+          last,
+          orientation,
+          optional,
+          ...child.props,
+        }),
       )}
-      {connector && alternativeLabel && !last &&
-        React.cloneElement(connector, { orientation, alternativeLabel })
-      }
+      {connector &&
+        alternativeLabel &&
+        !last &&
+        React.cloneElement(connector, { orientation, alternativeLabel })}
     </div>
   );
 }
@@ -87,6 +83,10 @@ Step.propTypes = {
    * Should be `Step` sub-components such as `StepLabel`.
    */
   children: PropTypes.node,
+  /**
+   * @ignore
+   */
+  classes: PropTypes.object,
   /**
    * Mark the step as completed. Is passed to child components.
    */
@@ -117,7 +117,7 @@ Step.propTypes = {
   /**
    * @ignore
    */
-  orientation: PropTypes.oneOf(["horizontal", "vertical"]).isRequired,
+  orientation: PropTypes.oneOf(['horizontal', 'vertical']).isRequired,
 };
 
 export default withStyles(styles)(Step);

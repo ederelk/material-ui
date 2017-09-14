@@ -1,16 +1,16 @@
 // @flow weak
 
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import withStyles from "../styles/withStyles";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import withStyles from '../styles/withStyles';
 
 export const styles = theme => ({
   root: {
-    flex: "1 1 auto"
+    flex: '1 1 auto',
   },
   line: {
-    display: "block",
+    display: 'block',
     borderColor: theme.palette.line.stepper,
   },
   rootVertical: {
@@ -18,50 +18,41 @@ export const styles = theme => ({
     padding: `0 0 ${theme.spacing.unit}px`,
   },
   lineHorizontal: {
-    borderTopStyle: "solid",
-    borderTopWidth: 1
+    borderTopStyle: 'solid',
+    borderTopWidth: 1,
   },
   lineVertical: {
-    borderLeftStyle: "solid",
+    borderLeftStyle: 'solid',
     borderLeftWidth: 1,
     minHeight: 24,
   },
   alternativeLabelRoot: {
-    position: "absolute",
+    position: 'absolute',
     top: theme.spacing.unit + 4,
     left: 'calc(50% + 20px)',
     right: 'calc(-50% + 20px)',
   },
   alternativeLabelLine: {
     marginLeft: 0,
-  }
+  },
 });
 
 function StepConnector(props) {
-  const {
-    alternativeLabel,
-    className: classNameProp,
-    classes,
-    orientation,
-    ...other
-  } = props;
+  const { alternativeLabel, className: classNameProp, classes, orientation, ...other } = props;
 
   const className = classNames(
     {
       [classes.root]: !alternativeLabel,
-      [classes.rootVertical]: orientation === "vertical",
+      [classes.rootVertical]: orientation === 'vertical',
       [classes.alternativeLabelRoot]: alternativeLabel,
     },
-    classNameProp
+    classNameProp,
   );
-  const lineClassName = classNames(
-    classes.line,
-    {
-      [classes.lineHorizontal]: orientation === 'horizontal',
-      [classes.lineVertical]: orientation === 'vertical',
-      [classes.alternativeLabelLine]: alternativeLabel,
-    }
-  );
+  const lineClassName = classNames(classes.line, {
+    [classes.lineHorizontal]: orientation === 'horizontal',
+    [classes.lineVertical]: orientation === 'vertical',
+    [classes.alternativeLabelLine]: alternativeLabel,
+  });
 
   return (
     <div className={className} {...other}>
@@ -87,7 +78,7 @@ StepConnector.propTypes = {
   /**
    * @ignore
    */
-  orientation: PropTypes.oneOf(["horizontal", "vertical"]).isRequired,
+  orientation: PropTypes.oneOf(['horizontal', 'vertical']).isRequired,
 };
 
 export default withStyles(styles)(StepConnector);

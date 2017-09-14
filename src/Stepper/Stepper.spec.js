@@ -1,3 +1,4 @@
+// @flow weak
 /* eslint-env mocha */
 
 import React from 'react';
@@ -6,7 +7,7 @@ import { createShallow, createMount, getClasses } from '../test-utils';
 import Step from './Step';
 import StepConnector from './StepConnector';
 import Stepper from './Stepper';
-import CheckCircle from '../svg-icons/CheckCircle'
+import CheckCircle from '../svg-icons/CheckCircle';
 
 describe('<Stepper />', () => {
   let shallow;
@@ -42,7 +43,7 @@ describe('<Stepper />', () => {
           <div />
           <div />
           <div />
-        </Stepper>
+        </Stepper>,
       );
 
       const children = wrapper.children();
@@ -60,14 +61,14 @@ describe('<Stepper />', () => {
           <div className="child-0" />
           <div className="child-1" />
           <div className="child-2" />
-        </Stepper>
+        </Stepper>,
       );
       assert.ok(wrapper.find('.child-0').prop('active'));
       assert.notOk(wrapper.find('.child-1').prop('active'));
       assert.notOk(wrapper.find('.child-2').prop('active'));
       assert.ok(wrapper.find('.child-1').prop('disabled'));
       assert.ok(wrapper.find('.child-2').prop('disabled'));
-      wrapper.setProps({activeStep: 1});
+      wrapper.setProps({ activeStep: 1 });
       assert.ok(wrapper.find('.child-0').prop('completed'));
       assert.notOk(wrapper.find('.child-0').prop('active'));
       assert.ok(wrapper.find('.child-1').prop('active'));
@@ -81,16 +82,16 @@ describe('<Stepper />', () => {
           <div className="child-0" />
           <div className="child-1" />
           <div className="child-2" />
-        </Stepper>
+        </Stepper>,
       );
       assert.ok(wrapper.find('.child-0').prop('active'));
       assert.notOk(wrapper.find('.child-1').prop('active'));
       assert.notOk(wrapper.find('.child-2').prop('active'));
-      wrapper.setProps({activeStep: 1});
+      wrapper.setProps({ activeStep: 1 });
       assert.notOk(wrapper.find('.child-0').prop('active'));
       assert.ok(wrapper.find('.child-1').prop('active'));
       assert.notOk(wrapper.find('.child-2').prop('active'));
-      wrapper.setProps({activeStep: 2});
+      wrapper.setProps({ activeStep: 2 });
       assert.notOk(wrapper.find('.child-0').prop('active'));
       assert.notOk(wrapper.find('.child-1').prop('active'));
       assert.ok(wrapper.find('.child-2').prop('active'));
@@ -100,11 +101,8 @@ describe('<Stepper />', () => {
       const wrapper = shallow(
         <Stepper linear={false}>
           <div />
-          {[
-            <div key={1} />,
-            <div key={2} />,
-          ]}
-        </Stepper>
+          {[<div key={1} />, <div key={2} />]}
+        </Stepper>,
       );
 
       const steps = wrapper.children().find('div');
@@ -118,34 +116,51 @@ describe('<Stepper />', () => {
     it('should have a default step connector', () => {
       const wrapper = shallow(
         <Stepper>
-          <Step /><Step />
-        </Stepper>
+          <Step />
+          <Step />
+        </Stepper>,
       );
 
-      assert.strictEqual(wrapper.find(StepConnector).length, 1, 'should contain a <StepConnector /> child');
+      assert.strictEqual(
+        wrapper.find(StepConnector).length,
+        1,
+        'should contain a <StepConnector /> child',
+      );
     });
 
     it('should allow the developer to specify a custom step connector', () => {
       const wrapper = shallow(
-        <Stepper
-          connector={<CheckCircle />}
-        >
-          <Step /><Step />
-        </Stepper>
+        <Stepper connector={<CheckCircle />}>
+          <Step />
+          <Step />
+        </Stepper>,
       );
 
-      assert.strictEqual(wrapper.find(CheckCircle).length, 1, 'should contain a <CheckCircle /> child');
-      assert.strictEqual(wrapper.find(StepConnector).length, 0, 'should not contain a <StepConnector /> child');
+      assert.strictEqual(
+        wrapper.find(CheckCircle).length,
+        1,
+        'should contain a <CheckCircle /> child',
+      );
+      assert.strictEqual(
+        wrapper.find(StepConnector).length,
+        0,
+        'should not contain a <StepConnector /> child',
+      );
     });
 
     it('should allow the step connector to be removed', () => {
       const wrapper = shallow(
         <Stepper connector={null}>
-          <Step /><Step />
-        </Stepper>
+          <Step />
+          <Step />
+        </Stepper>,
       );
 
-      assert.lengthOf(wrapper.find(StepConnector), 0, 'should not contain a <StepConnector /> child');
+      assert.lengthOf(
+        wrapper.find(StepConnector),
+        0,
+        'should not contain a <StepConnector /> child',
+      );
     });
   });
 });

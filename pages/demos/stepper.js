@@ -11,10 +11,12 @@ function Page() {
       markdown={markdown}
       demos={{
         'pages/demos/stepper/HorizontalLinearAlternativeLabelStepper.js': {
-          js: require('docs/src/pages/demos/stepper/HorizontalLinearAlternativeLabelStepper').default,
+          js: require('docs/src/pages/demos/stepper/HorizontalLinearAlternativeLabelStepper')
+            .default,
           raw: preval`
 module.exports = require('fs')
-  .readFileSync(require.resolve('docs/src/pages/demos/stepper/HorizontalLinearAlternativeLabelStepper'), 'utf8')
+  .readFileSync(require
+    .resolve('docs/src/pages/demos/stepper/HorizontalLinearAlternativeLabelStepper'), 'utf8')
 `,
         },
         'pages/demos/stepper/HorizontalLinearStepper.js': {
@@ -25,10 +27,12 @@ module.exports = require('fs')
 `,
         },
         'pages/demos/stepper/HorizontalNonLinearAlternativeLabelStepper.js': {
-          js: require('docs/src/pages/demos/stepper/HorizontalNonLinearAlternativeLabelStepper').default,
+          js: require('docs/src/pages/demos/stepper/HorizontalNonLinearAlternativeLabelStepper')
+            .default,
           raw: preval`
 module.exports = require('fs')
-  .readFileSync(require.resolve('docs/src/pages/demos/stepper/HorizontalNonLinearAlternativeLabelStepper'), 'utf8')
+  .readFileSync(require
+    .resolve('docs/src/pages/demos/stepper/HorizontalNonLinearAlternativeLabelStepper'), 'utf8')
 `,
         },
         'pages/demos/stepper/HorizontalNonLinearStepper.js': {

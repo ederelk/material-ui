@@ -1,23 +1,24 @@
 // @flow weak
 
-import React, { Children } from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import withStyles from "../styles/withStyles";
-import Paper from "../Paper";
-import StepConnector from "./StepConnector";
+import React, { Children } from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import withStyles from '../styles/withStyles';
+import Paper from '../Paper';
+import StepConnector from './StepConnector';
 
 export const styles = theme => ({
   root: {
-    display: "flex",
-    padding: theme.spacing.unit * 3, // TODO: Guidelines state 24px, should we use `theme.spacing.unit * 3` or 24px?
-  },
-  horizontal: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  vertical: {
-    flexDirection: "column",
+    display: 'flex',
+    // TODO: Guidelines state 24px, should we use `theme.spacing.unit * 3` or 24px?
+    padding: theme.spacing.unit * 3,
+    horizontal: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    vertical: {
+      flexDirection: 'column',
+    },
   },
 });
 
@@ -67,7 +68,7 @@ function Stepper(props) {
 
     return [
       !alternativeLabel && index > 0 && connector,
-      React.cloneElement(step, Object.assign(controlProps, step.props))
+      React.cloneElement(step, Object.assign(controlProps, step.props)),
     ];
   });
 
@@ -84,7 +85,8 @@ Stepper.propTypes = {
    */
   activeStep: PropTypes.number,
   /**
-   * If set to 'true' and orientation is horizontal, then the step label will be positioned under the icon.
+   * If set to 'true' and orientation is horizontal, 
+   * then the step label will be positioned under the icon.
    */
   alternativeLabel: PropTypes.bool,
   /**
@@ -110,7 +112,7 @@ Stepper.propTypes = {
   /**
    * The stepper orientation (layout flow direction)
    */
-  orientation: PropTypes.oneOf(["horizontal", "vertical"])
+  orientation: PropTypes.oneOf(['horizontal', 'vertical']),
 };
 
 Stepper.defaultProps = {
@@ -118,7 +120,7 @@ Stepper.defaultProps = {
   alternativeLabel: false,
   connector: <StepConnector />,
   nonLinear: false,
-  orientation: "horizontal",
+  orientation: 'horizontal',
 };
 
 export default withStyles(styles)(Stepper);

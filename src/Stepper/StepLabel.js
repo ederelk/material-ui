@@ -1,9 +1,9 @@
 // @flow weak
 
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import withStyles from "../styles/withStyles";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import withStyles from '../styles/withStyles';
 import Typography from '../Typography';
 import StepIcon from './StepIcon';
 
@@ -55,22 +55,16 @@ function StepLabel(props) {
     ...other
   } = props;
 
-  const className = classNames(
-    classes.root,
-    classes[orientation],
-    {
-      [classes.disabled]: disabled,
-      [classes.completed]: completed,
-      [classes.alternativeLabelRoot]: alternativeLabel,
-    },
-  );
-  const labelClassName = classNames(
-    {
-      [classes.alternativeLabel]: alternativeLabel,
-      [classes.active]: active,
-      [classes.completed]: completed,
-    }
-  );
+  const className = classNames(classes.root, classes[orientation], {
+    [classes.disabled]: disabled,
+    [classes.completed]: completed,
+    [classes.alternativeLabelRoot]: alternativeLabel,
+  });
+  const labelClassName = classNames({
+    [classes.alternativeLabel]: alternativeLabel,
+    [classes.active]: active,
+    [classes.completed]: completed,
+  });
   const iconContainerClassName = classNames(
     {
       [classes.iconContainer]: !alternativeLabel,
@@ -91,10 +85,14 @@ function StepLabel(props) {
         </span>
       )}
       <div>
-        <Typography type="body1" className={labelClassName}>{children}</Typography>
-        {optional &&
-          <Typography type="caption" className={classes.optional}>Optional</Typography>
-        }
+        <Typography type="body1" className={labelClassName}>
+          {children}
+        </Typography>
+        {optional && (
+          <Typography type="caption" className={classes.optional}>
+            Optional
+          </Typography>
+        )}
       </div>
     </span>
   );
@@ -115,6 +113,10 @@ StepLabel.propTypes = {
    */
   children: PropTypes.node,
   /**
+   * Custom styles for component.
+   */
+  classes: PropTypes.object,
+  /**
    * Mark the step as completed. Is passed to child components.
    */
   completed: PropTypes.bool,
@@ -126,11 +128,11 @@ StepLabel.propTypes = {
   /**
    * The icon displayed by the step label.
    */
-  icon: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.string,
-    PropTypes.number,
-  ]),
+  icon: PropTypes.oneOfType([PropTypes.element, PropTypes.string, PropTypes.number]),
+  /**
+   * Icon container class name
+   */
+  iconContainerClassName: PropTypes.string,
   /**
    * @ignore
    */
@@ -142,7 +144,7 @@ StepLabel.propTypes = {
   /**
    * @ignore
    */
-  orientation: PropTypes.oneOf(["horizontal", "vertical"]).isRequired,
+  orientation: PropTypes.oneOf(['horizontal', 'vertical']).isRequired,
 };
 
 export default withStyles(styles)(StepLabel);
