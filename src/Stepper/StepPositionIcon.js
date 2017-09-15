@@ -45,7 +45,7 @@ StepPositionIcon.propTypes = {
   /**
    * Classses for component style customizations.
    */
-  classes: PropTypes.bool,
+  classes: PropTypes.object,
   /**
    * The step position as a number.
    */
