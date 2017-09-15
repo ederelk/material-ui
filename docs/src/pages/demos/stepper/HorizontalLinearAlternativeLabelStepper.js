@@ -60,12 +60,13 @@ class HorizontalLabelPositionBelowStepper extends Component {
     const classes = this.props.classes;
     const steps = this.getSteps();
     const activeStep = this.state.activeStep;
-    const stepKey = 0;
+    let stepKey = 0;
 
     return (
       <div className={classes.root}>
         <Stepper activeStep={activeStep} alternativeLabel>
           {steps.map(label => {
+            stepKey += 1;
             return (
               <Step key={stepKey}>
                 <StepLabel>{label}</StepLabel>

@@ -10,15 +10,15 @@ import StepConnector from './StepConnector';
 export const styles = theme => ({
   root: {
     display: 'flex',
-    // TODO: Guidelines state 24px, should we use `theme.spacing.unit * 3` or 24px?
     padding: theme.spacing.unit * 3,
-    horizontal: {
-      flexDirection: 'row',
-      alignItems: 'center',
-    },
-    vertical: {
-      flexDirection: 'column',
-    },
+    // TODO: Guidelines state 24px, should we use `theme.spacing.unit * 3` or 24px?
+  },
+  horizontal: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  vertical: {
+    flexDirection: 'column',
   },
 });
 
