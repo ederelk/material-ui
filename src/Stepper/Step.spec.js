@@ -23,21 +23,27 @@ describe('<Step />', () => {
   it('merges styles and other props into the root node', () => {
     const wrapper = shallow(
       <Step
+        index={1}
         style={{ paddingRight: 200, color: 'purple', border: '1px solid tomato' }}
         role="Menuitem"
+        orientation="horizontal"
       />,
     );
     const { style, role } = wrapper.props();
     assert.strictEqual(style.paddingRight, 200);
     assert.strictEqual(style.color, 'purple');
     assert.strictEqual(style.border, '1px solid tomato');
-    assert.strictEqual(role, 'hello');
+    assert.strictEqual(role, 'Menuitem');
   });
 
   describe('rendering children', () => {
     it('renders children', () => {
       const children = <h1 className="hello-world">Hello World</h1>;
-      const wrapper = shallow(<Step label="Step One">{children}</Step>);
+      const wrapper = shallow(
+        <Step label="Step One" index={1} orientation="horizontal">
+          {children}
+        </Step>,
+      );
       assert.strictEqual(wrapper.find('.hello-world').length, 1);
     });
 
@@ -51,7 +57,7 @@ describe('<Step />', () => {
         </p>,
       ];
       const wrapper = shallow(
-        <Step active={false} completed disabled index={0}>
+        <Step active={false} completed disabled index={0} orientation="horizontal">
           {children}
         </Step>,
       );
@@ -73,7 +79,7 @@ describe('<Step />', () => {
         </h1>
       );
       const wrapper = shallow(
-        <Step active label="Step One">
+        <Step active label="Step One" orientation="horizontal" index={0}>
           {children}
         </Step>,
       );
