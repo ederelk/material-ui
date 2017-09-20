@@ -3,7 +3,7 @@
 
 import React from 'react';
 import { assert } from 'chai';
-import { createShallow, createMount, getClasses } from '../test-utils';
+import { createShallow, createMount } from '../test-utils';
 import Step from './Step';
 import StepConnector from './StepConnector';
 import Stepper from './Stepper';
@@ -12,11 +12,9 @@ import CheckCircle from '../svg-icons/CheckCircle';
 describe('<Stepper />', () => {
   let shallow;
   let mount;
-  let classes;
 
   before(() => {
     shallow = createShallow({ dive: true });
-    classes = getClasses(<Stepper />);
     mount = createMount();
   });
 

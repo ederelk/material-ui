@@ -2,17 +2,15 @@
 /* eslint-env mocha */
 import React from 'react';
 import { assert } from 'chai';
-import { createShallow, createMount, getClasses } from '../test-utils';
+import { createShallow, createMount } from '../test-utils';
 import Step from './Step';
 
 describe('<Step />', () => {
   let shallow;
   let mount;
-  let classes;
 
   before(() => {
     shallow = createShallow({ dive: true });
-    classes = getClasses(<Step index={0} orientation="horizontal" />);
     mount = createMount();
   });
 
