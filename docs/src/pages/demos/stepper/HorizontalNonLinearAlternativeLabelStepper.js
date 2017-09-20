@@ -194,16 +194,16 @@ class HorizontalNonLinearAlternativeLabelStepper extends Component {
                   Next
                 </Button>
                 {this.isStepOptional(activeStep) &&
-                !this.state.completed.has(this.state.activeStep) && (
-                  <Button
-                    raised
-                    color="primary"
-                    onClick={this.handleSkip}
-                    className={classes.button}
-                  >
-                    Skip
-                  </Button>
-                )}
+                  !this.state.completed.has(this.state.activeStep) && (
+                    <Button
+                      raised
+                      color="primary"
+                      onClick={this.handleSkip}
+                      className={classes.button}
+                    >
+                      Skip
+                    </Button>
+                  )}
                 {activeStep !== steps.length &&
                   (this.state.completed.has(this.state.activeStep) ? (
                     <Typography type="caption" className={classes.completed}>
