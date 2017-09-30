@@ -43,59 +43,59 @@ to discuss the approach before submitting a PR.
   - **Sortable ✓**
   - **Selectable ✓**
   - **Pagination ✓**
-- **[Dialogs](https://material.io/guidelines/components/dialogs.html) ✓**
-  - **[Alerts](https://material.io/guidelines/components/dialogs.html#dialogs-alerts) ✓**
-  - **[Simple menus](https://material.io/guidelines/components/dialogs.html#dialogs-simple-menus) (Menu) ✓**
-  - **[Simple dialogs](https://material.io/guidelines/components/dialogs.html#dialogs-simple-dialogs) (Can be constructed with Dialog and List.) ✓**
-  - **[Confirmation dialogs](https://material.io/guidelines/components/dialogs.html#dialogs-confirmation-dialogs) ✓**
-  - **[Full screen dialogs](https://material.io/guidelines/components/dialogs.html#dialogs-full-screen-dialogs) ✓**
-- **[Dividers](https://material.io/guidelines/components/dividers.html) ✓**
-  - **[Full bleed](https://material.io/guidelines/components/dividers.html#dividers-types-of-dividers) ✓**
-  - **[Inset](https://material.io/guidelines/components/dividers.html#dividers-types-of-dividers) ✓**
-- [Expansion Panels](https://material.io/guidelines/components/expansion-panels.html)
-- **[Grid lists](https://material.io/guidelines/components/grid-lists.html) ✓**
-- **[Lists](https://material.io/guidelines/components/lists.html) ✓**
-  - **[Single line](https://material.io/guidelines/components/lists.html#lists-specs) ✓**
-  - **[Two line](https://material.io/guidelines/components/lists.html#lists-specs) ✓**
-  - [Three line](https://material.io/guidelines/components/lists.html#lists-specs)
-  - **[Avatar](https://material.io/guidelines/components/lists.html#lists-specs) ✓**
-  - **[Icon](https://material.io/guidelines/components/lists.html#lists-specs) ✓**
-- **[Lists: Controls](https://material.io/guidelines/components/lists-controls.html) ✓**
-  - **[Checkbox](https://material.io/guidelines/components/lists-controls.html#lists-controls-types-of-list-controls) (Primary only) ✓**
-  - **[Switch](https://material.io/guidelines/components/lists-controls.html#lists-controls-types-of-list-controls) (Toggle) ✓**
-  - [Reorder](https://material.io/guidelines/components/lists-controls.html#lists-controls-types-of-list-controls)
-  - [Expand/collapse](https://material.io/guidelines/components/lists-controls.html#lists-controls-types-of-list-controls)
-  - [Leave-behinds](https://material.io/guidelines/components/lists-controls.html#lists-controls-types-of-list-controls)
-- **[Menus](https://material.io/guidelines/components/menus.html) ✓**
-  - **[Button menu](https://material.io/guidelines/components/menus.html#menus-usage) (Can be constructed) ✓**
-  - **[Scrollable](https://material.io/guidelines/components/menus.html#menus-usage) ✓**
-  - [Cascade](https://material.io/guidelines/components/menus.html#menus-usage)
-  - **[Textfield dropdown](https://material.io/guidelines/components/menus.html#menus-behavior) (Selet) ✓**
-  - **[Contextual / App bar dropdown](https://material.io/guidelines/components/menus.html#menus-usage) (IconButton + Menu) ✓**
-  - **[Simple menus](https://material.io/guidelines/components/menus.html#menus-simple-menus) (Menu) ✓**
-- [Pickers](https://material.io/guidelines/components/pickers.html)
-  - [Date picker](https://material.io/guidelines/components/pickers.html#pickers-date-pickers)
-  - [Time picker](https://material.io/guidelines/components/pickers.html#pickers-time-pickers)
-- **[Progress & activity](https://material.io/guidelines/components/progress-activity.html) ✓**
-  - **[Linear](https://material.io/guidelines/components/progress-activity.html#progress-activity-types-of-indicators) ✓**
-  - **[Circular](https://material.io/guidelines/components/progress-activity.html#progress-activity-types-of-indicators) ✓**
-  - **[Circular with integration](https://material.io/guidelines/components/progress-activity.html#progress-activity-types-of-indicators) ✓**
-  - **[Loading](https://material.io/guidelines/components/progress-activity.html#progress-activity-types-of-indicators) ✓**
-- **[Selection controls](https://material.io/guidelines/components/selection-controls.html) ✓**
-  - **[Checkbox](https://material.io/guidelines/components/selection-controls.html#selection-controls-checkbox) ✓**
-  - **[Radio button](https://material.io/guidelines/components/selection-controls.html#selection-controls-radio-button) ✓**
-  - **[Switch](https://material.io/guidelines/components/selection-controls.html#selection-controls-switch) ✓**
-- [Sliders](https://material.io/guidelines/components/sliders.html)
-  - [Continuous](https://material.io/guidelines/components/sliders.html#sliders-continuous-slider)
-  - [Discrete](https://material.io/guidelines/components/sliders.html#sliders-discrete-slider)
-- **[Snackbars](https://material.io/guidelines/components/snackbars-toasts.html) ✓**
-- **[Subheaders](https://material.io/guidelines/components/subheaders.html) ✓**
-  - **[List](https://material.io/guidelines/components/subheaders.html#subheaders-list-subheaders) ✓**
-  - **[Grid](https://material.io/guidelines/components/subheaders.html#subheaders-list-subheaders) ✓**
-  - [Menu](https://material.io/guidelines/components/subheaders.html#subheaders-list-subheaders)
-- [Steppers](https://material.io/guidelines/components/steppers.html)
-  - [Horizontal](https://material.io/guidelines/components/steppers.html#steppers-types-of-steppers)
-  - [Vertical](https://material.io/guidelines/components/steppers.html#steppers-types-of-steppers)
+- **[Dialogs](https://www.google.com/design/spec/components/dialogs.html) ✓**
+  - **[Alerts](https://www.google.com/design/spec/components/dialogs.html#dialogs-alerts) ✓**
+  - **[Simple menus](https://www.google.com/design/spec/components/dialogs.html#dialogs-simple-menus) (Menu) ✓**
+  - **[Simple dialogs](https://www.google.com/design/spec/components/dialogs.html#dialogs-simple-dialogs) (Can be constructed with Dialog and List.) ✓**
+  - **[Confirmation dialogs](https://www.google.com/design/spec/components/dialogs.html#dialogs-confirmation-dialogs) ✓**
+  - **[Full screen dialogs](https://www.google.com/design/spec/components/dialogs.html#dialogs-full-screen-dialogs) ✓**
+- **[Dividers](https://www.google.com/design/spec/components/dividers.html) ✓**
+  - **[Full bleed](https://www.google.com/design/spec/components/dividers.html#dividers-types-of-dividers) ✓**
+  - **[Inset](https://www.google.com/design/spec/components/dividers.html#dividers-types-of-dividers) ✓**
+- [Expansion Panels](https://www.google.com/design/spec/components/expansion-panels.html)
+- **[Grid lists](https://www.google.com/design/spec/components/grid-lists.html) ✓**
+- **[Lists](https://www.google.com/design/spec/components/lists.html) ✓**
+  - **[Single line](https://www.google.com/design/spec/components/lists.html#lists-specs) ✓**
+  - **[Two line](https://www.google.com/design/spec/components/lists.html#lists-specs) ✓**
+  - [Three line](https://www.google.com/design/spec/components/lists.html#lists-specs)
+  - **[Avatar](https://www.google.com/design/spec/components/lists.html#lists-specs) ✓**
+  - **[Icon](https://www.google.com/design/spec/components/lists.html#lists-specs) ✓**
+- **[Lists: Controls](https://www.google.com/design/spec/components/lists-controls.html) ✓**
+  - **[Checkbox](https://www.google.com/design/spec/components/lists-controls.html#lists-controls-types-of-list-controls) (Primary only) ✓**
+  - **[Switch](https://www.google.com/design/spec/components/lists-controls.html#lists-controls-types-of-list-controls) (Toggle) ✓**
+  - [Reorder](https://www.google.com/design/spec/components/lists-controls.html#lists-controls-types-of-list-controls)
+  - [Expand/collapse](https://www.google.com/design/spec/components/lists-controls.html#lists-controls-types-of-list-controls)
+  - [Leave-behinds](https://www.google.com/design/spec/components/lists-controls.html#lists-controls-types-of-list-controls)
+- **[Menus](https://www.google.com/design/spec/components/menus.html) ✓**
+  - **[Button menu](https://www.google.com/design/spec/components/menus.html#menus-usage) (Can be constructed) ✓**
+  - **[Scrollable](https://www.google.com/design/spec/components/menus.html#menus-usage) ✓**
+  - [Cascade](https://www.google.com/design/spec/components/menus.html#menus-usage)
+  - **[Textfield dropdown](https://www.google.com/design/spec/components/menus.html#menus-behavior) (Selet) ✓**
+  - **[Contextual / App bar dropdown](https://www.google.com/design/spec/components/menus.html#menus-usage) (IconButton + Menu) ✓**
+  - **[Simple menus](https://www.google.com/design/spec/components/menus.html#menus-simple-menus) (Menu) ✓**
+- [Pickers](https://www.google.com/design/spec/components/pickers.html)
+  - [Date picker](https://www.google.com/design/spec/components/pickers.html#pickers-date-pickers)
+  - [Time picker](https://www.google.com/design/spec/components/pickers.html#pickers-time-pickers)
+- **[Progress & activity](https://www.google.com/design/spec/components/progress-activity.html) ✓**
+  - **[Linear](https://www.google.com/design/spec/components/progress-activity.html#progress-activity-types-of-indicators) ✓**
+  - **[Circular](https://www.google.com/design/spec/components/progress-activity.html#progress-activity-types-of-indicators) ✓**
+  - **[Circular with integration](https://www.google.com/design/spec/components/progress-activity.html#progress-activity-types-of-indicators) ✓**
+  - **[Loading](https://www.google.com/design/spec/components/progress-activity.html#progress-activity-types-of-indicators) ✓**
+- **[Selection controls](https://www.google.com/design/spec/components/selection-controls.html) ✓**
+  - **[Checkbox](https://www.google.com/design/spec/components/selection-controls.html#selection-controls-checkbox) ✓**
+  - **[Radio button](https://www.google.com/design/spec/components/selection-controls.html#selection-controls-radio-button) ✓**
+  - **[Switch](https://www.google.com/design/spec/components/selection-controls.html#selection-controls-switch) ✓**
+- [Sliders](https://www.google.com/design/spec/components/sliders.html)
+  - [Continuous](https://www.google.com/design/spec/components/sliders.html#sliders-continuous-slider)
+  - [Discrete](https://www.google.com/design/spec/components/sliders.html#sliders-discrete-slider)
+- **[Snackbars](https://www.google.com/design/spec/components/snackbars-toasts.html) ✓**
+- **[Subheaders](https://www.google.com/design/spec/components/subheaders.html) ✓**
+  - **[List](https://www.google.com/design/spec/components/subheaders.html#subheaders-list-subheaders) ✓**
+  - **[Grid](https://www.google.com/design/spec/components/subheaders.html#subheaders-list-subheaders) ✓**
+  - [Menu](https://www.google.com/design/spec/components/subheaders.html#subheaders-list-subheaders)
+- [Steppers](https://www.google.com/design/spec/components/steppers.html)
+  - **[Horizontal](https://www.google.com/design/spec/components/steppers.html#steppers-types-of-steppers) ✓**
+  - **[Vertical](https://www.google.com/design/spec/components/steppers.html#steppers-types-of-steppers) ✓**
   - **[Mobile steps](https://material.io/guidelines/components/steppers.html#steppers-types-of-steps) ✓**
 - **[Tabs](https://material.io/guidelines/components/tabs.html) ✓**
   - Usage
